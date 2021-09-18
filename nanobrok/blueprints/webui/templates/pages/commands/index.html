@@ -1,0 +1,11 @@
+{% extends 'default/base.html' %} {% block content %}
+
+<h3>Commands</h3>
+<div class="card p-0 m-0" id="content_user_data">
+    {% include 'pages/commands/content.html' %}
+</div>
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/global.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/commands.js') }}"></script>
+{% endblock %}

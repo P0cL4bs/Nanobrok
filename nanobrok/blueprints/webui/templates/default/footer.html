@@ -1,0 +1,57 @@
+<div class="custom-footer">
+    <div class="container-fluid">
+        <div class="row row-eq-spacing-lg">
+            <div class="col-lg-3">
+                <div class="content">
+                    <div>
+                        <a href="/" class="custom-footer-link">Home</a>
+                    </div>
+                    <div>
+                        <a href="{{config.get('LINK_DOCS')}}" target="_blank" class="custom-footer-link">Documentation</a>
+                    </div>
+                    <div>
+                        <a href="/about" class="custom-footer-link">About</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="content">
+                    <h4 class="content-title font-size-16 mb-10">Questions</h4>
+                    <div>
+                        <a href="/team/" class="custom-footer-link">Team</a>
+                    </div>
+                    <div>
+                        <a href="{{config.get('LINK_GITHUB')}}/issues" target="_blank" rel="noopener" class="custom-footer-link">Report an issue</a>
+                    </div>
+                    <div>
+                        <a href="mailto:{{config.get('EMAIL_SUPPORT')}}" target="_blank" rel="noopener" class="custom-footer-link">Contact us</a>
+                    </div>
+                    <div>
+                        <a href="{{config.get('LINK_TWITTER')}}" target="_blank" rel="noopener" class="custom-footer-link">
+                            Follow us on <i class="fab fa-twitter" aria-hidden="true"></i> Twitter
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="content">
+                    <h4 class="content-title font-size-16 mb-10">Legal</h4>
+                    <div>
+                        <a href="/privacy-policy/" class="custom-footer-link">Privacy policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="content">
+                    <h4 class="content-title font-size-16 mb-10">Made with <i class="fa fa-heart text-danger ml-5 mr-5" aria-hidden="true"></i> by P0cl4bs Team</h4>
+                    <div class="mb-10">
+                        <a href="#top" class="btn btn-primary btn-scroll-to-top" role="button">Scroll to top</a>
+                    </div>
+                    <div class="text-muted">
+                        © Copyright 2021, {% block title %}{{config.get('TITLE')}}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

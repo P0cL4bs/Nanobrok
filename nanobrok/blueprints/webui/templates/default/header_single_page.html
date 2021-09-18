@@ -1,0 +1,54 @@
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Chrome, Firefox OS and Opera mobile address bar theming -->
+    <meta name="theme-color" content="#000000">
+    <!-- Windows Phone mobile address bar theming -->
+    <meta name="msapplication-navbutton-color" content="#000000">
+    <!-- iOS Safari mobile address bar theming -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+
+
+    <!-- Fav and Title -->
+    <link rel="icon" href="/static/halfmoon/img/halfmoon-fav-alt.png">
+    <title>{% block title %}{{config.get('TITLE')}}{% endblock %}</title>
+
+    <!-- Halfmoon -->
+    <link href="{{ url_for('static', filename= 'css/halfmoon-variables.min.css') }}" rel="stylesheet" />
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" />
+    <!-- Roboto font (Used when Apple system fonts are not available) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <!-- Documentation styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/privacy_style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+
+
+    <style type="text/css">
+        .navbar,
+        .navbar.navbar-static-bottom {
+            border-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark-mode .navbar,
+        .dark-mode .navbar.navbar-static-bottom {
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .border-subsection {
+            border-left: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark-mode .border-subsection {
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+
+</head>

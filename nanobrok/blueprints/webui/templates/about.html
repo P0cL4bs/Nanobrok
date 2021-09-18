@@ -1,0 +1,99 @@
+{% extends 'default/base_about.html' %} {% block content %}
+<h3>About</h3>
+
+<div class="content">
+    <h1 class="content-title mb-0" style="font-size: 2.8rem;">
+        License
+    </h1>
+    <p class="text-muted mt-0">
+        Last updated: {{config.get('DATE_RELEASE')}}
+    </p>
+    <p class="text-muted mt-0">
+        Current version: {{config.get('VERSION')}}
+    </p>
+    <p>
+        <a href="/" class="hyperlink">{{config.get('TITLE')}}</a> is a security mobile tool that provide a secure communication with your remote server for control your device for every you want.
+    </p>
+    <p>
+        Context: <strong>{{config.get('TITLE')}}</strong> provide a server opensource for you build remote server any cloud service, the focus this tool is safe your device with stable service of remote location and monitor activty from device like network,
+        apps, security and more.
+    </p>
+
+    <div class="p-20 text-monospace bg-light bg-dark-dm rounded font-size-12">
+        <p>
+            Apache License 2.0
+        </p>
+        <p>
+            &copy; Copyright 2021, Nanobrok - P0cL4bs Team
+        </p>
+        <p>
+            Licensed under the Apache License, Version 2.0 (the "License"); <br> you may not use this file except in compliance with the License. <br> You may obtain a copy of the License at <br>
+        </p>
+        <p>
+            http://www.apache.org/licenses/LICENSE-2.0 <br>
+        </p>
+        <p>
+            Unless required by applicable law or agreed to in writing, software <br> distributed under the License is distributed on an "AS IS" BASIS, <br> WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. <br> See the License for
+            the specific language governing <br> permissions and limitations under the License. <br>
+        </p>
+    </div>
+    <p>
+        Please consider supporting us through Patreon.
+    </p>
+    <a href="{{config.get('LINK_PATREAON')}}" class="card sponsor-section-card w-350 mw-full m-0 p-0 d-flex" target="_blank" rel="noopener">
+        <div class="w-60 h-60 m-10 align-self-center">
+            <img src="{{ url_for('static', filename= 'images/patreon-logo.svg') }}" class="d-block w-60 h-60 rounded" alt="Patreon image placeholder">
+        </div>
+        <div class="flex-grow-1 d-flex align-items-center">
+            <div class="p-10 w-full m-auto">
+                <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                    Support on Patreon <i class="fa fa-angle-right ml-5" aria-hidden="true"></i>
+                </p>
+                <p class="m-0 mt-5 text-muted font-size-12">
+                    Become a backer on Patreon, and help us grow Nanobrok.
+                </p>
+            </div>
+        </div>
+    </a>
+
+    <h4 class="content-title font-size-16 mb-0 mt-20">
+        Contacts
+    </h4>
+    <p class="mt-10 mb-15">
+        Email: <a href="mailto:{{config.get('EMAIL_SUPPORT')}}" class="hyperlink">{{config.get('EMAIL_SUPPORT')}}</a>
+        <br /> Twitter: <a href="{{config.get('LINK_TWITTER')}}" target="_blank" rel="noopener" class="hyperlink">{{config.get('LINK_TWITTER')}}</a>
+        <br /> Github: <a href="{{config.get('LINK_GITHUB')}}" target="_blank" rel="noopener" class="hyperlink">{{config.get('LINK_GITHUB')}}</a>
+    </p>
+
+    <h4 class="content-title font-size-16 mb-0 mt-20">
+        Library
+    </h4>
+    <p class="mt-10 mb-15">
+        This tool has been powered by the beautiful framework <a href="https://www.gethalfmoon.com/" target="_blank" rel="noopener" class="hyperlink">Halfmoon UI</a>
+    </p>
+
+</div>
+
+
+
+<!-- Footer start -->
+<div class="content my-0">
+    <hr class="my-0" />
+</div>
+<nav class="navbar navbar-static-bottom bg-transparent border-top-transparent">
+    <div class="container-lg">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="mailto:{{config.get('EMAIL_SUPPORT')}}" class="nav-link" target="_blank" rel="noopener">Contact us</a>
+            </li>
+        </ul>
+        <span class="navbar-text ml-0">
+                                    &copy; Copyright 2021, Nanbrok - P0cL4bs Team
+                                </span>
+    </div>
+</nav>
+<!-- Footer end -->
+
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+{% endblock %}

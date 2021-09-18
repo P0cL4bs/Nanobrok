@@ -1,0 +1,86 @@
+<!-- Sidebar start -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-menu">
+        <div class="sidebar-content m-10">
+            <div class=" w-250 mw-full m-0 p-0 d-flex" rel="noopener">
+                <div class="w-60 h-60 m-0 align-self-center">
+                    <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                        <span class="material-icons md-24">phone_android</span>
+                        <span class="sr-only">Device</span>
+                    </div>
+                </div>
+                <div id="header_sidebar">
+                    <div class="flex-grow-1 d-flex align-items-center">
+                        <div class="p-10 w-full m-auto">
+                            <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                                {{ mobile_user.deviceInfo.manufacturer }} {{ mobile_user.deviceInfo.model }}
+                            </p>
+                            <p class="m-0 mt-0 text-muted font-size-12">
+                                Android {{ mobile_user.deviceInfo.oSVersion }} | Battery {{ mobile_user.deviceInfo.batteryPercentage }} %
+                            </p>
+                            {% if mobile_user.is_connected %}
+                            <span class="rounded text-success text-smoothing-auto">Online</span> {% else %}
+                            <span class="rounded text-danger text-smoothing-auto">Offline</span> {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h5 class="sidebar-title">General</h5>
+        <div class="sidebar-divider"></div>
+        <a href="/" class="sidebar-link sidebar-link-with-icon {{ 'active' if request.path == '/' else '' }}">
+            <span class="sidebar-icon">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                </span> Home
+        </a>
+        <a href="/network" class="sidebar-link sidebar-link-with-icon {{ 'active' if request.path == '/network/' else '' }}">
+            <span class="sidebar-icon">
+                    <i class="fas fa-wifi" aria-hidden="true"></i>
+                </span> Network
+        </a>
+        <a href="/events" class="sidebar-link sidebar-link-with-icon {{ 'active' if request.path == '/events/' else '' }}">
+            <span class="sidebar-icon">
+                    <i class="fas fa-indent" aria-hidden="true"></i>
+                </span> Events
+        </a>
+        <a href="/apps" class="sidebar-link sidebar-link-with-icon {{ 'active' if request.path == '/apps/' else '' }}">
+            <span class="sidebar-icon">
+                    <i class="fab fa-google-play" aria-hidden="true"></i>
+                </span> Apps
+        </a>
+        <a href="/location" class="sidebar-link sidebar-link-with-icon {{ 'active' if request.path == '/location/' else '' }}">
+            <span class="sidebar-icon">
+                    <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+                </span> Location
+        </a>
+        <a href="/commands" class="sidebar-link sidebar-link-with-icon {{ 'active' if request.path == '/commands/' else '' }}">
+            <span class="sidebar-icon">
+                <span class="material-icons md-18">send</span>
+            </span> Commands
+        </a>
+        <a href="/extensions" class="sidebar-link sidebar-link-with-icon {{ 'active' if request.path == '/extensions/' else '' }}">
+            <span class="sidebar-icon">
+                <span class="material-icons md-18">extension</span>
+            </span> Extensions
+        </a>
+        <br />
+        <h5 class="sidebar-title">Tools</h5>
+        <div class="sidebar-divider"></div>
+        <a href="/transfer" class="sidebar-link sidebar-link-with-icon {{ 'active' if request.path == '/transfer/' else '' }}">
+            <span class="sidebar-icon">
+                <span class="material-icons-outlined md-18">
+                    file_upload
+                    </span>
+            </span> File transfer
+        </a>
+        <a href="/netscan" class="sidebar-link sidebar-link-with-icon {{ 'active' if request.path == '/netscan/' else '' }}">
+            <span class="sidebar-icon">
+                <span class="material-icons-outlined">
+                    radar
+                    </span>
+            </span> Network Scanner
+        </a>
+    </div>
+</div>
+<!-- Sidebar end -->

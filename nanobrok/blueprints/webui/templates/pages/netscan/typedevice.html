@@ -1,0 +1,25 @@
+{% macro checkDeviceType(devicetype) -%}
+
+    {% if devicetype == 'PHONE' %}
+        <span class="material-icons-outlined">smartphone</span>
+    {% elif devicetype == 'PC' %}
+        <span class="material-icons-outlined">computer</span>
+    {% elif devicetype == 'VM' %}
+       <span class="material-icons-outlined">phonelink</span>
+    {% elif devicetype == 'ROUTER' %}
+        <span class="material-icons-outlined">router</span>
+    {% elif devicetype == 'NETWORK_DEVICE' %}
+        <span class="material-icons-outlined">podcasts</span>
+    {% elif devicetype == 'GAME_CONSOLE' %}
+        <span class="material-icons-outlined">sports_esports</span>
+    {% elif devicetype == 'SOC' %}
+        <span class="material-icons-outlined">desktop_windows</span>
+    {% elif devicetype == 'SPEAKER' %}
+        <span class="material-icons-outlined">speaker_group</span>
+    {% elif devicetype == 'CAST' %}
+        <span class="material-icons-outlined">cast</span>
+    {% else %}
+        <span class="material-icons-outlined">device_unknown</span>
+    {% endif %}
+
+{%- endmacro %}

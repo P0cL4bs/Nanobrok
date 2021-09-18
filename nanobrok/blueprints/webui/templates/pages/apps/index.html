@@ -1,0 +1,35 @@
+{% extends 'default/base.html' %} {% block content %}
+
+<h3>Apps</h3>
+<div class="content m-0 p-0" id="content_logs">
+    <div class="btn-toolbar mt-10 p-5 bg-light-lm bg-very-dark-dm rounded" role="toolbar" aria-label="Another toolbar with button group and input group">
+        <!-- mt-10 = margin-top: 1rem (10px), p-5 = padding: 0.5rem (5px), bg-light-lm = background-color: var(--gray-color-light) only in light mode, bg-very-dark-dm = background-color: var(--dark-color-dark) only in dark mode, rounded = rounded corners -->
+        <div class="navbar-content">
+
+        </div>
+        <div class="navbar-content">
+            <button id="btn_update_apps" class="btn btn-rounded btn-sm mr-10" type="button">Update All Apps</button>
+        </div>
+
+        <div class="input-group ml-auto">
+            <!-- ml-auto = margin-left: auto -->
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+            </div>
+            <input type="text" class="form-control" id="input_filter_apps" onkeyup="filter_apps()" placeholder="Search apps by name">
+        </div>
+        <button class="btn ml-10" onclick="clear_filter_apps()" type="button">Clear</button>
+
+    </div>
+
+    <div id="content_apps" class="card mt-10 m-0">
+        {% include "pages/apps/content.html" %}
+    </div>
+
+</div>
+
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/global.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/apps.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'default/header_single_page.html' %}
+
+<body class="dark-mode with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true">
+
+
+    <!-- Page wrapper start -->
+    <div id="page-wrapper" class="page-wrapper">
+
+        <!-- Content wrapper start -->
+        <div class="content-wrapper bg-light-lm bg-dark-dm css-scrollbar-transparent-track">
+
+            <div class="container-lg h-full">
+                <div class="row h-full">
+                    <div class="col-md-8 offset-md-2 bg-white-lm bg-dark-light-dm">
+
+                        <!-- Navbar start -->
+                        <nav class="navbar bg-transparent">
+                            <a href="/" class="navbar-brand">
+                                <h3 class="content-title m-0 mr-10">Nanobrok</h3>
+                                <span class="badge font-size-12 text-monospace px-5 px-sm-10">
+                                    v{{config.get('VERSION')}}
+                                </span>
+                            </a>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a onclick="history.back()" class="nav-link">Back <i class="fa fa-angle-right ml-5" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- Navbar end -->
+
+                        <!-- Page content start -->
+
+                        <div class="content">
+                            <h1 class="content-title mb-0" style="font-size: 2.8rem;">
+                                Team
+                            </h1>
+                            <p class="text-muted mt-0">
+                                Last updated: {{config.get('DATE_RELEASE')}}
+                            </p>
+                            <p>
+                                <strong>Nanobrok</strong> is is a security mobile tool that provide a secure communication with your remote server for control your device for every you want.
+                            </p>
+
+                            <p>
+                                This page contains a list of all contributor(s).
+                            </p>
+
+                            <hr />
+                            <!-- List contributors-->
+                            {% include 'default/contributors.html' %}
+
+                            <!-- Patreon link start -->
+                            <hr />
+                            <p>
+                                Please consider supporting us:
+                            </p>
+                            <a href="{{config.get('LINK_PATREAON')}}" class="card sponsor-section-card w-350 mw-full m-0 p-0 d-flex" target="_blank" rel="noopener">
+                                <div class="w-60 h-60 m-10 align-self-center">
+                                    <img src="{{ url_for('static', filename= 'images/patreon-logo.svg') }}" class="d-block w-60 h-60 rounded" alt="Patreon image placeholder">
+                                </div>
+                                <div class="flex-grow-1 d-flex align-items-center">
+                                    <div class="p-10 w-full m-auto">
+                                        <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                                            Support on Patreon <i class="fa fa-angle-right ml-5" aria-hidden="true"></i>
+                                        </p>
+                                        <p class="m-0 mt-5 text-muted font-size-12">
+                                            Become a backer on Patreon, and help us grow Nanobrok.
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="{{config.get('LINK_PAYPAL')}}" class="card sponsor-section-card w-350 mw-full m-0 p-0 d-flex mt-20" target="_blank" rel="noopener">
+                                <div class="w-60 h-60 m-10 align-self-center">
+                                    <img src="{{ url_for('static', filename= 'images/paypal.svg') }}" class="d-block w-60 h-60 rounded" alt="Patreon image placeholder">
+                                </div>
+                                <div class="flex-grow-1 d-flex align-items-center">
+                                    <div class="p-10 w-full m-auto">
+                                        <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                                            Support on Paypal <i class="fa fa-angle-right ml-5" aria-hidden="true"></i>
+                                        </p>
+                                        <p class="m-0 mt-5 text-muted font-size-12">
+                                            Donate on Paypal, and help us grow Nanobrok.
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <p class="content-title font-size-12 mt-20">Made with <i class="fa fa-heart text-danger ml-5 mr-5" aria-hidden="true"></i> by P0cl4bs Team</p>
+
+                            <!-- Patreon link end -->
+                        </div>
+
+                        <!-- Page content end -->
+
+                        <!-- Footer start -->
+                        <div class="content my-0">
+                            <hr class="my-0" />
+                        </div>
+                        <nav class="navbar navbar-static-bottom bg-transparent border-top-transparent">
+                            <div class="container-lg">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a href="mailto:{{config.get('EMAIL_SUPPORT')}}" class="nav-link" target="_blank" rel="noopener">Contact us</a>
+                                    </li>
+                                </ul>
+                                <span class="navbar-text ml-0">
+                                    &copy; Copyright 2021, Nanobrok 
+                                </span>
+                            </div>
+                        </nav>
+                        <!-- Footer end -->
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Content wrapper end -->
+
+    </div>
+    <!-- Page wrapper end -->
+
+    <!-- Halfmoon JS -->
+    <script src="{{ url_for('static', filename='js/halfmoon.min.js') }}"></script>
+
+</body>
+
+
+</html>

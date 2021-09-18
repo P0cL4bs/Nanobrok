@@ -1,0 +1,65 @@
+{% extends 'default/base.html' %} {% block content %}
+
+<div class="modal" id="modal-6" tabindex="-1" role="dialog" data-overlay-dismissal-disabled="true" data-esc-dismissal-disabled="true">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="btn-toolbar mb-10" role="toolbar" aria-label="Toolbar with sets of button groups">
+                <h5 class="content-title mb-0">Location History</h5>
+                <div class="navbar-content ml-auto">
+                    <a href="#" data-dismiss="modal" id="btnClose" class="btn mr-5 closed btn-square rounded-circle" role="button">&times;</a>
+                </div>
+            </div>
+
+            <div class="card  bg-very-dark-dm w-350 h-400 overflow-y-auto mw-full m-0 d-flex align-items-center">
+
+                <div class="m-auto">
+                    {% include 'pages/location/list_locations.html'%}
+                </div>
+            </div>
+
+            <div class="text-right mt-20">
+                <a href="#" data-dismiss="modal" id="btnViewLocation" class="btn btn-primary" role="button"> <i class="fas fa-tags"></i> View</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Location</h3>
+<div class="content m-0 p-0" id="content_location">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card docs-footer-card p-0 m-0">
+                    <div class="row">
+
+                        <div class="col-lg-8">
+                            <div class="content" id="view_map_div">
+                                {% include 'pages/location/map.html'%}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 actions-leftbar-container" id="actions-leftbar-container">
+                            <div class="content position-lg-sticky top-lg-0 left-lg-0 py-card my-0">
+                                <div id="actions_network_div">
+                                    {% include 'pages/location/actions.html'%}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/global.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/location.js') }}"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+{% endblock %}

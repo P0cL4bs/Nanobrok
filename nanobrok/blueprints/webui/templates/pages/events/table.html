@@ -1,0 +1,52 @@
+<table class="table table-striped" id="table_packet_data">
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>PacketType</th>
+            <th>Event</th>
+            <th class="text-right">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for packetdata in allPacketData.items %}
+        <tr>
+            <th>{{packetdata.command if packetdata.command else ""}}</th>
+            <td><span class="p-5 rounded text{{'-success' if packetdata.packet_type.name == 'SEND_PACKET_CODE' else '-secondary'}} bg-dark{{'-light' if packetdata.packet_type.name == 'SEND_PACKET_CODE' else ''}}">{{packetdata.packet_type.name}}</span></td>
+            <td><span class="badge ">{{packetdata.event}}</span></td>
+            <td class="text-right">{{packetdata.registred_at.strftime('%d/%m/%Y, %H:%M %p ') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% if allPacketData.items|length == 0 %}
+<div class="row align-items-center justify-content-center mt-20">
+    <div class="col-md-4">
+        <div class="text-center">
+            <img src="{{ url_for('static', filename= 'images/events_empty.svg') }}" class="img-fluid rounded" alt="...">
+        </div>
+    </div>
+</div>
+{% endif%}
+
+<nav aria-label="...">
+    <ul class="pagination mt-20">
+
+        <li class="page-item {{ '' if allPacketData.has_prev else 'disabled'}}">
+            <a href="/events/{{allPacketData.prev_num}}" class="page-link w-50" tabindex="-1">Prev.</a>
+        </li>
+
+        {% for page in allPacketData.iter_pages(left_edge= 3, right_edge=3, left_current=3)%} {% if page %}
+
+        <li class="page-item {{'active' if page == allPacketData.page else ''}} " aria-current="page">
+            <a href="/events/{{ page }}" class="page-link">{{page}}</a>
+        </li>
+        {% else %}
+        <li class="page-item ellipsis"></li>
+        {% endif %} {% endfor%}
+
+        <li class="page-item {{ '' if allPacketData.has_next else 'disabled'}}">
+            <a href="/events/{{allPacketData.next_num}}" class="page-link w-50">Next</a>
+        </li>
+    </ul>
+</nav>

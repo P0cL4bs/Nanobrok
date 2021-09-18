@@ -1,0 +1,17 @@
+{% macro render_field(field) %}
+
+<div class="form-group">
+    <label for="{{ field.id }}">{{ field.label }}</label>
+    <input type="text" class="form-control" name="{{ field.name }}" id="{{ field.id }}">
+    <div class="invalid-feedback">
+        {% if field.errors %}
+        <ul>
+            {% for error in field.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+
+{% endmacro %}

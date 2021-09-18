@@ -1,0 +1,30 @@
+<div class="card sponsor-section-card h-300 overflow-y-auto mw-full p-0 m-0 align-items-center justify-content-center">
+
+    <div class="row row-eq-spacing m-10 p-0 align-items-center justify-content-center">
+        {% if audios %} {% for audio in audios %}
+        <div class="card m-5 p-10">
+            <div class="position-absolute top-0 right-0 z-10 p-10">
+                <p class="text-muted mt-0">{{ audio.size }}</p>
+            </div>
+            <div class="h-50 m-2">
+                <span class="badge badge-primary"> {{ audio.registred_at.strftime('%m/%d/%Y, %H:%M %p ')}}</span>
+            </div>
+            <audio controls=" controls " autobuffer="autobuffer">
+                    <source src="data:audio/wav;base64,{{audio.data}}" />
+                    Your browser does not support the audio element.
+                </audio>
+        </div>
+        {% endfor %} {% else %}
+        <div class="row align-items-center justify-content-center">
+            <div class="col-4 ">
+                <div class="text-center">
+                    <img src="{{ url_for('static', filename= 'images/command_recording.svg') }}" class="img-fluid rounded" alt="...">
+                </div>
+            </div>
+        </div>
+
+        <h5 class="d-flex">No data record</h5>
+        {% endif%}
+
+    </div>
+</div>

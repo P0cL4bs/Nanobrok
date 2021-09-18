@@ -1,0 +1,69 @@
+from flask import Blueprint, jsonify
+
+from flask_restplus import Api
+from werkzeug.exceptions import HTTPException
+from nanobrok.ext.csrf_protect import csrf
+
+# This file is part of the Nanobrok Open Source Project.
+# nanobrok is licensed under the Apache 2.0.
+
+# Copyright 2021 p0cL4bs Team - Marcos Bomfim (mh4x0f)
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+class ExtendedAPI(Api):
+    """This class overrides 'handle_error' method of 'Api' class ,
+    to extend global exception handing functionality of 'flask-restful'.
+    """
+
+    def handle_error(self, err):
+        """It helps preventing writing unnecessary
+        try/except block though out the application
+        """
+        print(err)  # log every exception raised in the application
+        # Handle HTTPExceptions
+        if isinstance(err, HTTPException):
+            return jsonify({"message": err.msg, "code": err.code}), err.code
+        # If msg attribute is not set,
+        # consider it as Python core exception and
+        # hide sensitive error info from end user
+        if not getattr(err, "message", None):
+            return jsonify({"message": "Server has encountered some error"}), 500
+        # Handle application specific custom exceptions
+        return jsonify(**err.kwargs), err.http_status_code
+
+
+bp_mob = Blueprint("mobile_restapi", __name__, url_prefix="/api/v1/mobile")
+bp_web = Blueprint("web_restapi", __name__, url_prefix="/api/v1/web")
+
+api_mob = ExtendedAPI(bp_mob, doc="mobile/documentation")
+api_web = ExtendedAPI(bp_web, doc="web/documentation")
+
+# exlcude routes mobile for csrf token validation
+csrf.exempt(bp_mob)
+
+# namespace for all web Controllers
+ns_auth = api_web.namespace("authenticate", description="AuthControllers")
+ns_location = api_web.namespace("getCurrentLocation", description="LocationControllers")
+ns_commands = api_web.namespace("commands", description="CommandsControllers")
+ns_transfer = api_web.namespace("transfer", description="TransferControllers")
+
+# namespace for all mobile Controllers
+ns_events = api_mob.namespace("events", description="EventControllers")
+ns_user = api_mob.namespace("users", description="UserControllers")
+
+
+def init_app(app):
+    app.register_blueprint(bp_mob)
+    app.register_blueprint(bp_web)

@@ -1,0 +1,137 @@
+{% extends 'default/base.html' %} {% block content %}
+
+<h3>File transfer</h3>
+<div class="card m-0 p-0" id="content_transfer">
+
+    <div class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <DIV id="dropzone">
+                    <FORM class="dropzone needsclick" id="demo-upload" method="POST" action="/transfer/upload">
+                        <DIV class="dz-message needsclick">
+                            <div class="row align-items-center justify-content-center">
+                                <div class="col-md-6 ">
+
+                                    <div class="text-center">
+                                        <img src="{{ url_for('static', filename= 'images/transfer_upload_banner.svg') }}" class="img-fluid rounded" alt="...">
+                                    </div>
+                                </div>
+                            </div>
+                            Drop files here or click to upload.
+                            <BR>
+                        </DIV>
+                    </FORM>
+                </DIV>
+                <br/>
+            </div>
+            <div class="col-md-6">
+                <div class="content mt-0">
+                    <h4 class="mt-0">About</h4>
+                    <p><strong>File Transfer Tool</strong> is the easy, fast, and secure way to transfer files for your device.</p>
+                    <p><strong>Important:</strong> The default path is <strong>/storage/{{config.get('TITLE')}}</strong> you can change this on android app. <span class="p-5 rounded text-danger text-smoothing-auto">Max filesize: 15MiB.</span> </p>
+                    <ul>
+                        <li class="text-muted">
+                            <strong>Step 1:</strong> Open the {{config.get('TITLE')}} on your android
+                        </li>
+                        <li class="text-muted">
+                            <strong>Step 2:</strong> Find the option to open the screen <strong>File fransfer</strong> options
+                        </li>
+                        <li class="text-muted">
+                            <strong>Step 3:</strong> Click into <strong>Connect</strong> button for enable file transfer
+                        </li>
+                    </ul>
+                    <button class="btn btn-primary" id="btnCheckConnection" type="button">Check connection</button>
+                </div>
+
+            </div>
+
+
+            <!-- <DIV class="dz-preview dz-file-preview ">
+                <DIV class="dz-image">
+                    <IMG data-dz-thumbnail="">
+                </DIV>
+                <DIV class="dz-details">
+                    <DIV class="dz-size">
+                        <SPAN data-dz-size=""></SPAN>
+                    </DIV>
+                    <DIV class="dz-filename">
+                        <SPAN data-dz-name=""></SPAN>
+                    </DIV>
+                </DIV>
+                <DIV class="dz-progress">
+                    <SPAN class="dz-upload" data-dz-uploadprogress=""></SPAN>
+                </DIV>
+                <DIV class="dz-error-message">
+                    <SPAN data-dz-errormessage=""></SPAN>
+                </DIV>
+    
+                <div class="dz-success-mark">
+                    <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                        <title>Check</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs></defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                            <path d="M23.5,31.8431458 L17.5852419,25.9283877 C16.0248253,24.3679711 13.4910294,24.366835 11.9289322,25.9289322 C10.3700136,27.4878508 10.3665912,30.0234455 11.9283877,31.5852419 L20.4147581,40.0716123 C20.5133999,40.1702541 20.6159315,40.2626649 20.7218615,40.3488435 C22.2835669,41.8725651 24.794234,41.8626202 26.3461564,40.3106978 L43.3106978,23.3461564 C44.8771021,21.7797521 44.8758057,19.2483887 43.3137085,17.6862915 C41.7547899,16.1273729 39.2176035,16.1255422 37.6538436,17.6893022 L23.5,31.8431458 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z" id="Oval-2" stroke-opacity="0.198794158" stroke="#747474" fill-opacity="0.816519475" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                        </g>
+                    </svg>
+                </div>
+    
+                <div class="dz-error-mark">
+                    <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                        <title>error</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs></defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                            <g id="Check-+-Oval-2" sketch:type="MSLayerGroup" stroke="#747474" stroke-opacity="0.198794158" fill="#FFFFFF" fill-opacity="0.816519475">
+                                <path d="M32.6568542,29 L38.3106978,23.3461564 C39.8771021,21.7797521 39.8758057,19.2483887 38.3137085,17.6862915 C36.7547899,16.1273729 34.2176035,16.1255422 32.6538436,17.6893022 L27,23.3431458 L21.3461564,17.6893022 C19.7823965,16.1255422 17.2452101,16.1273729 15.6862915,17.6862915 C14.1241943,19.2483887 14.1228979,21.7797521 15.6893022,23.3461564 L21.3431458,29 L15.6893022,34.6538436 C14.1228979,36.2202479 14.1241943,38.7516113 15.6862915,40.3137085 C17.2452101,41.8726271 19.7823965,41.8744578 21.3461564,40.3106978 L27,34.6568542 L32.6538436,40.3106978 C34.2176035,41.8744578 36.7547899,41.8726271 38.3137085,40.3137085 C39.8758057,38.7516113 39.8771021,36.2202479 38.3106978,34.6538436 L32.6568542,29 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z" id="Oval-2" sketch:type="MSShapeGroup"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+    
+            </div>
+        </DIV> -->
+
+
+            <DIV id="preview-template" style="display: none;">
+
+                <div class="card sponsor-section-card mw-full mb-10 m-0 p-0 d-flex" rel="noopener">
+
+                    <div class="position-absolute top-0 right-0 z-10 p-10">
+                        <button data-dz-remove class="btn btn-sm btn-danger cancel" type="button">Cancel</button>
+                    </div>
+                    <div class="w-60 h-60 m-10 align-self-center">
+                        <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                            <i class="fa fa-map-o font-size-18" aria-hidden="true"></i>
+                            <SPAN data-dz-size=""></SPAN>
+                            <span class="sr-only">Roadmap image placeholder</span>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 d-flex align-items-center">
+                        <div class="p-10 w-full m-auto">
+                            <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                                <strong><SPAN data-dz-name=""></SPAN></strong>
+                            </p>
+                            <p class="m-0 mt-5 text-muted font-size-12">
+                                <SPAN class="p-5 rounded text-danger text-smoothing-auto" data-dz-errormessage=""></SPAN>
+                            </p>
+
+                            <div class="progress-group">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-animated" data-dz-uploadprogress="" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    {% endblock %} {% block scripts %}
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app/global.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app/dropzone.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app/transfer.js') }}"></script>
+    {% endblock %}

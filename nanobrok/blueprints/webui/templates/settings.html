@@ -1,0 +1,44 @@
+{% extends 'default/base_settings.html' %} {% block content %}
+<h3>Settings</h3>
+
+<div class="card p-0">
+    <div class="content">
+
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with sets of button groups">
+
+            <div class="btn-group" role="group" aria-label="First group">
+                <h5>General</h5>
+            </div>
+
+            <div class="ml-auto d-flex">
+                <p class="mr-10"><strong>Last sync:</strong> {{mobile_user.lest_sync.strftime('%d/%m/%Y, %H:%M %p ')}}</p>
+
+                <form action="{{url_for('webui.sync_index')}}" method="get">
+                    <button type="submit" value="logout" class="btn btn-primary" name="btn_logout "><i class="fas fa-sync"></i> Sync  </button>
+                </form>
+            </div>
+        </div>
+
+        <hr>
+        <div class="content m-0 p-0">
+            <div class="row row-eq-spacing mb-5 align-items-center justify-content-center">
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename= 'images/events_empty.svg') }}" class="img-fluid rounded" alt="...">
+                        <p>Settings currently under development</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/global.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/settings.js') }}"></script>
+{% endblock %}

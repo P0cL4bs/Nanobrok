@@ -1,0 +1,57 @@
+<h3 class="content-title" id="controlsNetwork">Controls</h3>
+
+{% if last_location %}
+<p class="d-inline"> <strong>Last Location:</strong>
+    <p id="location_current_date" class="text-danger d-inline"> {{ last_location.date.strftime('%d/%m/%Y, %H:%M %p ') }}
+    </p>
+</p>
+<p class="d-inline"> <strong>Last Address:</strong>
+    <p id="location_current_address" class="p-5 rounded d-inline"> {{ last_location.address if last_location.address else "Unknown" }}
+    </p>
+</p>
+
+<p>
+    <i class="fas fa-map-marker-alt"></i> <a id="location_current_gmaps" href="https://maps.google.com/maps?daddr={{last_location.latitude}},{{last_location.longitude}}" target="_blank" class="hyperlink">Show on <strong>Google Maps</strong></a>
+</p>
+<input type="hidden" id="location_latitude_id" value="{{ last_location.latitude }}">
+<input type="hidden" id="location_longitude_id" value="{{ last_location.longitude }}">
+<input type="hidden" id="location_address_id" value="{{ last_location.address }}"> {% endif %}
+
+<a href="#" id="btnGetHistory" onclick="halfmoon.toggleModal('modal-6')" class="mb-10 card sponsor-section-card mw-full m-0 p-0 d-flex" rel="noopener">
+    <div class="w-60 h-60 m-10 align-self-center">
+        <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+            <i class="far fa-map font-size-18" aria-hidden="true"></i>
+            <span class="sr-only">Location history</span>
+        </div>
+    </div>
+    <div class="flex-grow-1 d-flex align-items-center">
+        <div class="p-10 w-full m-auto">
+            <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                Location history <i class="fa fa-angle-right ml-5" aria-hidden="true"></i>
+            </p>
+            <p class="m-0 mt-5 text-muted font-size-12">
+                See my all location history, you can also delete locations from your history.
+            </p>
+        </div>
+    </div>
+</a>
+
+
+<button id="btnGetLocalizaiton" class="btn btn-primary btn-block" name="end_resquest">Locate My Device</button>
+<div class="content m-0 pt-10">
+    {% for category, message in get_flashed_messages(with_categories=True) %} {% if message %}
+    <div class="alert alert-{{category}}" role="alert">
+        <button class="close" data-dismiss="alert" type="button" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        <h4 class="alert-heading">Notification</h4>
+        {{ message}}
+    </div>
+    {% endif %} {% endfor %}
+</div>
+
+<ul>
+    <li class="text-muted">
+        The <strong>Nanobrok</strong> app need to be running in background, you can check this look on notification icon of app
+    </li>
+</ul>

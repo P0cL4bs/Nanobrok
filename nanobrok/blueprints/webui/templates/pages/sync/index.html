@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'default/header.html' %}
+
+<body class="dark-mode with-custom-webkit-scrollbars with-custom-css-scrollbars">
+
+    <div class="page-wrapper with-navbar">
+
+        <div class="sticky-alerts"></div>
+
+        <!-- Navbar start -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <h3 class="content-title m-0">{% block title %}{{config.get('TITLE')}}{% endblock %}
+                    <h3>
+                        <span class="badge ml-10">{% block version %}{{config.get('VERSION')}}{% endblock %}</span>
+            </div>
+
+            <div class="navbar-content">
+                <ul class="navbar-nav hidden-sm-and-down">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="navbar-content ml-auto">
+                <form action="/logout" method="get">
+                    <button type="submit" value="logout" class="btn" name="btn_logout"><i class="fas fa-sign-out-alt"></i> </button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="content-wrapper">
+            <div class="content h-full">
+
+                <div class="d-flex h-500 align-items-center justify-content-center">
+
+                    <div class="card w-full h-full ">
+
+
+                        <div class="row">
+
+                            <!-- Help us grow section start -->
+                            <div class="col-lg-7">
+                                <div class="content">
+                                    <h3 class="content-title">Connect {{config.get('TITLE')}} with your Android device</h3>
+                                    <hr>
+                                    <!-- Project roadmap start -->
+                                    <p> The {{config.get('TITLE')}} only permit to connect one device, even if you use the same token for different devices only the last one to connect will have access to the system.</p>
+                                    <p><strong>Important:</strong> Your device stay paired until you unpair them.</p>
+                                    <p><strong>Step 1:</strong> Open the {{config.get('TITLE')}} on the android </p>
+                                    <p><strong>Step 2:</strong> Click into more options and select <strong>Sync web</strong> </p>
+                                    <p><strong>Step 3:</strong> point the phone at the screen to send the <strong>token</strong> </p>
+
+                                    {% if not user.is_connected %}
+                                    <form action="{{url_for('webui.sync_index')}}" method="post" id="subscriber-form">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                                        <input type="submit" value="Check" class="btn btn-primary" name="save_subscriber_form">
+                                    </form>
+                                    {% else %}
+                                    <form action="/" method="post">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                                        <input type="submit" value="Next" class="btn btn-primary" name="save_subscriber_form">
+                                    </form>
+                                    {% endif %}
+
+                                    <div class="content m-0 pt-10">
+                                        {% with messages = get_flashed_messages() %} {% if messages %}
+                                        <div class="alert alert-success filled-dm" role="alert">
+                                            <h4 class="alert-heading">Android device connected successfully</h4>
+                                            {{ messages[0] }}
+                                        </div>
+                                        {% endif %} {% endwith %}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Help us grow section end -->
+
+                            <!-- Subscriber form container start -->
+                            <div class="col-lg-5 subscriber-form-container" id="subscriber-form-container">
+                                <div class="content position-lg-sticky top-lg-0 left-lg-0 py-card my-0">
+                                    <div class="position-absolute top-0 right-0 z-5 p-5">
+                                        <div class="custom-switch">
+                                            <input type="checkbox" id="switchTokenMode" value="">
+                                            <label for="switchTokenMode">Show encoded token</label>
+                                        </div>
+                                    </div>
+                                    <div id="qrcodeToken">
+                                        <div class="m-20 d-flex align-items-center justify-content-center">
+                                            <img src="{{ qrcode(token_jwt, box_size=5, border=2)  }}">
+                                        </div>
+                                    </div>
+
+                                    <div id="divAreaToken" class="mt-20">
+                                        <textarea class="form-control" readonly="readonly">{{ token_jwt }}</textarea>
+                                    </div>
+
+                                    <br>
+                                    <ul>
+                                        <li class="text-muted">
+                                            <strong>Important:</strong> For sync to work, your <strong>Android device</strong> need an internet connection.
+                                        </li>
+                                        <li class="text-muted">
+                                            This <strong>QR code</strong> (token) is used to ensure every data protected when sending for the server, so please don't share your token with others.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Subscriber form container end -->
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {% include "default/footer.html"%}
+        </div>
+
+    </div>
+    <script src="{{ url_for('static', filename='js/halfmoon.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app/global.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app/sync.js') }}"></script>
+</body>
+
+</html>

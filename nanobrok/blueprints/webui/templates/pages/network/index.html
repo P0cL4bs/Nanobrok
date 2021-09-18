@@ -1,0 +1,114 @@
+ {% extends 'default/base.html' %} {% block content %}
+<h3>Network</h3>
+<div class="modal" id="modal_delete_all" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <h5 class="modal-title">Delete all selected items</h5>
+            <p>
+                Are you sure you want to permanently remove all wifiInfo selected ?
+            </p>
+            <div class="text-right mt-20">
+                <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
+                <a href="#" class="btn mr-5" role="button">Close</a>
+                <a href="#" class="btn btn-primary" id="btn_action_delete_all" role="button">I understand</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card docs-footer-card p-0 m-0">
+                <div class="row">
+
+                    <div class="col-lg-7" id="div_wifiInfo">
+                        <div class="content" id="view_network_div">
+                            {% include 'pages/network/view.html'%}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 actions-leftbar-container" id="actions-leftbar-container">
+                        <div class="content position-lg-sticky top-lg-0 left-lg-0 py-card my-0">
+                            <h3 class="content-title" id="controlsNetwork">Controls & Actions</h3>
+
+                            <p class="text-muted m-0 p-0">bellow you can get the history of all wifi information</p>
+                            <div id="actions_network_div">
+                                {% include 'pages/network/actions.html'%}
+                            </div>
+
+                            <ul>
+                                <li class="text-muted">
+                                    In the <code>connected state</code> , access to sensitive fields <strong>GPS is enable</strong> for get data like bssid, mac address and ssid of network.
+                                </li>
+                                <li class="text-muted">
+                                    if you stay connected from mobile data, you can't get information about <strong>DHCP</strong>.
+                                </li>
+                            </ul>
+
+                            <form action="/network/" method="post" id="request_update">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                                <input type="submit" value="Request data" class="btn btn-primary btn-block" name="end_resquest">
+                            </form>
+                            <div class="content m-0 pt-10">
+                                {% for category, message in get_flashed_messages(with_categories=True) %} {% if message %}
+                                <div class="alert alert-{{category}}" role="alert">
+                                    <button class="close" data-dismiss="alert" type="button" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    <h4 class="alert-heading">Notification</h4>
+                                    {{ message}}
+                                </div>
+                                {% endif %} {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4><strong>History</strong></h4>
+<div class="card m-0 p-0" id="content_history">
+    <div class="content">
+
+        <div class="row row-eq-spacing mb-5">
+
+            {% for item in dataWifiInfo %}
+            <a id="{{ item }}" href="#controlsNetwork" class="card sponsor-section-card w-300 mw-full m-5 p-0 d-flex networkAction" rel="noopener">
+                <div class="w-60 h-60 m-10 align-self-center">
+                    <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                        <i class="fas fa-wifi font-size-24" aria-hidden="true"></i>
+                        <span class="sr-only">IP</span>
+                    </div>
+                </div>
+                <div class="flex-grow-1 d-flex align-items-center">
+                    <div class="p-10 w-full m-auto">
+                        <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                            {{ item }}
+                        </p>
+                        <p class="m-0 mt-5 text-muted font-size-12">
+                            Gateway: <code class="code"> {{ dataWifiInfo[item]["current"].gateway }}</code>
+                        </p>
+                        <span class="badge mt-5">{{ dataWifiInfo[item]["current"].date.strftime('%d/%m/%Y, %H:%M %p ') }}</span>
+                    </div>
+                    <div class="position-absolute top-0 right-0 z-10 p-10">
+                        <span class="btn btn-square btn-primary rounded-circle" role="button"> {{ dataWifiInfo[item]["wifiInfo"]|length}} </span>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+
+    {% endblock %} {% block scripts %}
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app/global.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app/network.js') }}"></script>
+    {% endblock %}

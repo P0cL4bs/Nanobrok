@@ -1,0 +1,23 @@
+<div class="flex-grow-1 d-flex align-items-center">
+    <div class="p-10 w-full m-auto">
+        {% if mobile_user %}
+            <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                {{ mobile_user.deviceInfo.manufacturer }} {{ mobile_user.deviceInfo.model }}
+            </p>
+            <p class="m-0 mt-0 text-muted font-size-12">
+                Android {{ mobile_user.deviceInfo.oSVersion }} | Battery {{ mobile_user.deviceInfo.batteryPercentage }} %
+            </p>
+            {% if mobile_user.is_connected %}
+            <span class="rounded text-success text-smoothing-auto">Online</span> {% else %}
+            <span class="rounded text-danger text-smoothing-auto">Offline</span> {% endif %}
+            {% else %}
+            <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                -- --
+            </p>
+            <p class="m-0 mt-0 text-muted font-size-12">
+                Android -- | Battery --
+            </p>
+            <span class="rounded text-danger text-smoothing-auto">Offline</span>
+        {% endif %}
+    </div>
+</div>

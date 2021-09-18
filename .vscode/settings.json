@@ -1,0 +1,29 @@
+{
+    "python.pythonPath": "venv/bin/python",
+    "html.suggest.html5": true,
+    "html.autoClosingTags": true,
+    "css.styleSheets": [
+        "nanobrok/css/style.css",
+        "/nanobrok/css/style.css",
+        "nanobrok/css/halfmoon.min.css",
+        "/nanobrok/css/halfmoon.min.css",
+        "${fileBasenameNoExtension}.css"
+    ],
+    "files.associations": {
+        "*.html": "html"
+    },
+    "files.exclude": {
+        "**/*.pyc": {"when": "$(basename).py"}, 
+        "**/__pycache__": true,
+    },
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./nanobrok",
+        "-p",
+        "test_*.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.unittestEnabled": true
+}

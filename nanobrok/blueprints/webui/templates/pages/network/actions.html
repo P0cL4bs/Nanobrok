@@ -1,0 +1,22 @@
+<div class="content d-flex ml-0 mb-20">
+    <select class="form-control mr-10" id="select_network_actions" {{ 'disabled="disabled"' if not list_dateWifiInfo else '' }}>
+        <option value="" selected="selected" >Select a date to view</option>
+        {% if list_dateWifiInfo %}
+            {% for date in list_dateWifiInfo %}
+                <option value="{{ date }}">{{ date.strftime('%d/%m/%Y, %H:%M %p ') }}</option>
+            {% endfor %}
+        {% endif %}
+    </select>
+    <button class="btn {{ 'disabled' if not list_dateWifiInfo else '' }}" id="btn_view_action" type="button">View</button>
+
+    <div class="dropdown ml-10 ">
+        <button class="btn" data-toggle="dropdown" id="dropdown_network_actions" {{ 'disabled="disabled"' if not list_dateWifiInfo else '' }} type="button" id="dropdown-toggle-btn-1" aria-haspopup="true" aria-expanded="false">
+             Options <i class="fa fa-angle-down ml-5" aria-hidden="true"></i> <!-- ml-5 = margin-left: 0.5rem (5px) -->
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdown-toggle-btn-1">
+            <h6 class="dropdown-header">Options</h6>
+            <a href="#" id="btn_action_delete_one" class="dropdown-item">Delete</a>
+            <a href="#modal_delete_all" class="dropdown-item">Delete all</a>
+        </div>
+    </div>
+</div>

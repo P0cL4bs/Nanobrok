@@ -1,0 +1,18 @@
+{% if timeout %} 
+    {% if has_permission %}
+        <div class="alert alert-success filled-dm" role="alert">
+            <h4 class="alert-heading">Permission already granted</h4>
+            The permission has been granted to the given app.
+        </div>
+    {% else %}
+        <div class="alert alert-danger filled-dm" role="alert">
+            <h4 class="alert-heading">Permission denied</h4>
+            The permission has not been granted to the given app.
+        </div>
+    {% endif%} 
+{% else %} 
+<div class="alert alert-secondary filled-dm" role="alert">
+  <h4 class="alert-heading">Connection Timeout</h4>
+  The client stops attempting to connect to the client after [timeout] seconds. Maybe the android app is offline.
+</div>
+{% endif%}

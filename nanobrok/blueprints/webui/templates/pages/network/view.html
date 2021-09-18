@@ -1,0 +1,72 @@
+<h5 class=""><strong>WiFi information</strong></h5>
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <td>SSID</td>
+            <td>{{ last_wifiInfo.ssid if last_wifiInfo else '--' }}</td>
+        </tr>
+        <tr>
+            <td>BSSID</td>
+            <td>{{ last_wifiInfo.bssid if last_wifiInfo else '--' }}</td>
+        </tr>
+        <tr>
+            <td>IP Address</td>
+            <td>{{ last_wifiInfo.ip_address if last_wifiInfo else '--' }}</td>
+        </tr>
+        <tr>
+            <td>Frequency</td>
+            <td>{{ last_wifiInfo.frequency if last_wifiInfo else '--' }}</td>
+        </tr>
+        <tr>
+            <td>Signal</td>
+            <td>{{ last_wifiInfo.rssi if last_wifiInfo else '--' }} %</td>
+        </tr>
+        <tr>
+            <td>Link speed </td>
+            <td>{{ last_wifiInfo.link_spped if last_wifiInfo else '--' }}</td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td>{{ last_wifiInfo.date.strftime('%d/%m/%Y, %H:%M %p ') if last_wifiInfo else '--' }}</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    Describes the state of any Wi-Fi connection that is active or is in the process of being set up.
+</p>
+<!-- Sponsors start -->
+<h5 class=""><strong>DHCP information</strong></h5>
+
+
+
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <td>Gateway</td>
+            <td>{{ last_wifiInfo.gateway if last_wifiInfo else '--' }}</td>
+        </tr>
+        <tr>
+            <td>Netmask</td>
+            <td>{{ last_wifiInfo.netmask if last_wifiInfo else '--' }}</td>
+        </tr>
+        <tr>
+            <td>Dns 1</td>
+            <td>{{ last_wifiInfo.dns1 if last_wifiInfo else '--' }}</td>
+        </tr>
+        <tr>
+            <td>Dns 2</td>
+            <td>{{ last_wifiInfo.dns2 if last_wifiInfo else '--' }}</td>
+        </tr>
+        <tr>
+            <td>DHCP Server</td>
+            <td>{{ last_wifiInfo.serverAddress if last_wifiInfo else '--' }}</td>
+        </tr>
+        <tr>
+            <td>Dhcp Lease</td>
+            <td>{{ last_wifiInfo.leaseDuration if last_wifiInfo else '--' }} </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    In addition to the IP address, DHCP also assigns the subnet mask, default gateway address, domain name server (DNS) address and other pertinent configuration parameters.
+</p>

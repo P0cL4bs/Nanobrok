@@ -1,0 +1,245 @@
+[default]
+
+[heroku]
+DEBUG = false
+
+# app informations
+TITLE = "Nanobrok"
+VERSION= "1.0.0"
+DOMAIN_CORS="corsorigin.nanobrok.io"
+UPDATE_PRIVACY_POLICY="01/07/2021"
+DATE_RELEASE = "01/07/2021"
+
+# flask flags and settings application
+SESSION_TYPE = "sqlalchemy"
+SQLALCHEMY_TRACK_MODIFICATIONS=false
+SQLALCHEMY_DATABASE_URI = 'postgresql://[replace URI here]'
+TEMPLATES_AUTO_RELOAD = false
+SECRET_KEY = "[your secret key here, please use random strings]"
+PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
+# life time session in days
+SESSION_LIFETIME = 2
+REDIECT_TO_HTTPS = true
+FALIED_LOGIN_ATTEMPTS= 5
+FALIED_TIME_WAIT_MINUTES=30
+
+# support links and emails
+LINK_DOCS="https://github.com/P0cL4bs/nanobrok/wiki"
+LINK_TWITTER= "https://twitter.com/nanobrok"
+LINK_PATREAON= "https://www.patreon.com/nanobrok?fan_landing=true"
+LINK_GITHUB= "https://github.com/P0cL4bs/nanobrok"
+LINK_PAYPAL= "https://www.paypal.com/donate/?hosted_button_id=LJNKDUAT5LX4G&source=url"
+EMAIL_SUPPORT= "nanobrok.protect@gmail.com"
+
+# section extensions core app
+EXTENSIONS = [
+    "nanobrok.ext.database:init_app",
+    "nanobrok.ext.manager:init_app",
+    "nanobrok.ext.auth:init_app",
+    "nanobrok.ext.commands:init_app",
+    "nanobrok.ext.restapi:init_app",
+    "nanobrok.ext.socketio:init_app",
+    "nanobrok.ext.qrcode:init_app",
+    "nanobrok.ext.session:init_app",
+    "nanobrok.ext.cors:init_app",
+    "nanobrok.ext.csrf_protect:init_app",
+    "nanobrok.blueprints.webui:init_app"
+]
+
+# settings routes register modules
+ROUTERS = [
+    "nanobrok.blueprints.resources.resourcesUsers:register_routes",
+    "nanobrok.blueprints.resources.resourcesLocation:register_routes",
+    "nanobrok.blueprints.resources.resourcesCommands:register_routes",
+    "nanobrok.blueprints.resources.resourcesAuth:register_routes",
+    "nanobrok.blueprints.resources.resourcesTransfer:register_routes",
+    "nanobrok.blueprints.resources.resourcesEvents:register_routes"
+]
+
+# session socketio settings
+ENDPOINT_IO_TRANSFER= "/transfer"
+ENDPOINT_IO_CORE= "/core"
+ENGINEIO_LOGGER=true
+
+
+[development]
+DEBUG = true
+
+# app informations
+TITLE = "Nanobrok"
+VERSION= "1.0.0"
+DOMAIN_CORS="corsorigin.nanobrok.io"
+UPDATE_PRIVACY_POLICY="01/07/2021"
+DATE_RELEASE = "01/07/2021"
+
+# flask flags and settings application
+SESSION_TYPE = "sqlalchemy"
+SQLALCHEMY_TRACK_MODIFICATIONS=false
+SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/project_safe'
+TEMPLATES_AUTO_RELOAD = true
+SECRET_KEY = "jadkfbsdkjbfbh"
+PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
+SESSION_LIFETIME = 2
+BLOCK_HTTP_CONNECTION = false
+FALIED_LOGIN_ATTEMPTS= 5
+FALIED_TIME_WAIT_MINUTES=30
+
+# support links and emails
+LINK_DOCS="https://github.com/P0cL4bs/nanobrok/wiki"
+LINK_TWITTER= "https://twitter.com/nanobrok"
+LINK_PATREAON= "https://www.patreon.com/nanobrok?fan_landing=true"
+LINK_GITHUB= "https://github.com/P0cL4bs/nanobrok"
+LINK_PAYPAL= "https://www.paypal.com/donate/?hosted_button_id=LJNKDUAT5LX4G&source=url"
+EMAIL_SUPPORT= "nanobrok.protect@gmail.com"
+
+# section extensions core app
+EXTENSIONS = [
+    "nanobrok.ext.database:init_app",
+    "nanobrok.ext.manager:init_app",
+    "nanobrok.ext.auth:init_app",
+    "nanobrok.ext.commands:init_app",
+    "nanobrok.ext.restapi:init_app",
+    "nanobrok.ext.socketio:init_app",
+    "nanobrok.ext.qrcode:init_app",
+    "nanobrok.ext.session:init_app",
+    "nanobrok.ext.cors:init_app",
+    "nanobrok.ext.csrf_protect:init_app",
+    "nanobrok.blueprints.webui:init_app"
+]
+
+# settings routes register modules
+ROUTERS = [
+    "nanobrok.blueprints.resources.resourcesUsers:register_routes",
+    "nanobrok.blueprints.resources.resourcesLocation:register_routes",
+    "nanobrok.blueprints.resources.resourcesCommands:register_routes",
+    "nanobrok.blueprints.resources.resourcesAuth:register_routes",
+    "nanobrok.blueprints.resources.resourcesTransfer:register_routes",
+    "nanobrok.blueprints.resources.resourcesEvents:register_routes"
+]
+
+# session socketio settings
+ENDPOINT_IO_TRANSFER= "/transfer"
+ENDPOINT_IO_CORE= "/core"
+ENGINEIO_LOGGER=true
+
+[docker]
+DEBUG = true
+
+# app informations
+TITLE = "Nanobrok"
+VERSION= "1.0.0"
+DOMAIN_CORS="corsorigin.nanobrok.io"
+UPDATE_PRIVACY_POLICY="01/07/2021"
+DATE_RELEASE = "01/07/2021"
+
+# flask flags and settings application
+SESSION_TYPE = "sqlalchemy"
+SQLALCHEMY_TRACK_MODIFICATIONS=false
+SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/project_safe'
+TEMPLATES_AUTO_RELOAD = true
+SECRET_KEY = "jadkfbsdkjbfbh"
+PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
+SESSION_LIFETIME = 2
+BLOCK_HTTP_CONNECTION = false
+FALIED_LOGIN_ATTEMPTS= 5
+FALIED_TIME_WAIT_MINUTES=30
+
+# support links and emails
+LINK_DOCS="https://github.com/P0cL4bs/nanobrok/wiki"
+LINK_TWITTER= "https://twitter.com/nanobrok"
+LINK_PATREAON= "https://www.patreon.com/nanobrok?fan_landing=true"
+LINK_GITHUB= "https://github.com/P0cL4bs/nanobrok"
+LINK_PAYPAL= "https://www.paypal.com/donate/?hosted_button_id=LJNKDUAT5LX4G&source=url"
+EMAIL_SUPPORT= "nanobrok.protect@gmail.com"
+
+# section extensions core app
+EXTENSIONS = [
+    "nanobrok.ext.database:init_app",
+    "nanobrok.ext.manager:init_app",
+    "nanobrok.ext.auth:init_app",
+    "nanobrok.ext.commands:init_app",
+    "nanobrok.ext.restapi:init_app",
+    "nanobrok.ext.socketio:init_app",
+    "nanobrok.ext.qrcode:init_app",
+    "nanobrok.ext.session:init_app",
+    "nanobrok.ext.cors:init_app",
+    "nanobrok.ext.csrf_protect:init_app",
+    "nanobrok.blueprints.webui:init_app"
+]
+
+# settings routes register modules
+ROUTERS = [
+    "nanobrok.blueprints.resources.resourcesUsers:register_routes",
+    "nanobrok.blueprints.resources.resourcesLocation:register_routes",
+    "nanobrok.blueprints.resources.resourcesCommands:register_routes",
+    "nanobrok.blueprints.resources.resourcesAuth:register_routes",
+    "nanobrok.blueprints.resources.resourcesTransfer:register_routes",
+    "nanobrok.blueprints.resources.resourcesEvents:register_routes"
+]
+
+# session socketio settings
+ENDPOINT_IO_TRANSFER= "/transfer"
+ENDPOINT_IO_CORE= "/core"
+ENGINEIO_LOGGER=true
+
+
+[production]
+DEBUG = false
+
+# app informations
+TITLE = "Nanobrok"
+VERSION= "1.0.0"
+DOMAIN_CORS="corsorigin.nanobrok.io"
+UPDATE_PRIVACY_POLICY="01/07/2021"
+DATE_RELEASE = "01/07/2021"
+
+# flask flags and settings application
+SESSION_TYPE = "sqlalchemy"
+SQLALCHEMY_TRACK_MODIFICATIONS=false
+SQLALCHEMY_DATABASE_URI = 'postgresql://[replace URI here]'
+TEMPLATES_AUTO_RELOAD = false
+SECRET_KEY = "[your secret key here, please use random strings]"
+PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
+# life time session in days
+SESSION_LIFETIME = 2
+BLOCK_HTTP_CONNECTION = true
+FALIED_LOGIN_ATTEMPTS= 5
+FALIED_TIME_WAIT_MINUTES=30
+
+# support links and emails
+LINK_DOCS="https://github.com/P0cL4bs/nanobrok/wiki"
+LINK_TWITTER= "https://twitter.com/nanobrok"
+LINK_PATREAON= "https://www.patreon.com/nanobrok?fan_landing=true"
+LINK_GITHUB= "https://github.com/P0cL4bs/nanobrok"
+LINK_PAYPAL= "https://www.paypal.com/donate/?hosted_button_id=LJNKDUAT5LX4G&source=url"
+EMAIL_SUPPORT= "nanobrok.protect@gmail.com"
+
+# section extensions core app
+EXTENSIONS = [
+    "nanobrok.ext.database:init_app",
+    "nanobrok.ext.manager:init_app",
+    "nanobrok.ext.auth:init_app",
+    "nanobrok.ext.commands:init_app",
+    "nanobrok.ext.restapi:init_app",
+    "nanobrok.ext.socketio:init_app",
+    "nanobrok.ext.qrcode:init_app",
+    "nanobrok.ext.session:init_app",
+    "nanobrok.ext.cors:init_app",
+    "nanobrok.ext.csrf_protect:init_app",
+    "nanobrok.blueprints.webui:init_app"
+]
+
+# settings routes register modules
+ROUTERS = [
+    "nanobrok.blueprints.resources.resourcesUsers:register_routes",
+    "nanobrok.blueprints.resources.resourcesLocation:register_routes",
+    "nanobrok.blueprints.resources.resourcesCommands:register_routes",
+    "nanobrok.blueprints.resources.resourcesAuth:register_routes",
+    "nanobrok.blueprints.resources.resourcesTransfer:register_routes",
+    "nanobrok.blueprints.resources.resourcesEvents:register_routes"
+]
+
+# session socketio settings
+ENDPOINT_IO_TRANSFER= "/transfer"
+ENDPOINT_IO_CORE= "/core"
+ENGINEIO_LOGGER=true

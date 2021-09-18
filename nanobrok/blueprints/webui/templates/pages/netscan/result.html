@@ -1,0 +1,116 @@
+<div class="card m-0 p-0 mt-10" id="content_network_scanner">
+    <div class="alert m-10" role="alert">
+        <h4 class="alert-heading">
+            <i class="fa fa-share-square mr-5 text-primary"></i> Network Information
+        </h4>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Mac address</th>
+                    <th>Signal</th>
+                    <th>Netmask</th>
+                    <th class="text-right">Router</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ current_network.ssid if current_network else '--' }}</td>
+                    <td>{{ current_network.bssid if current_network else '--' }}</td>
+                    <td>{{ current_network.rssi if current_network else '--' }} %</td>
+                    <td>{{ current_network.netmask if current_network else '--' }}</td>
+                    <td class="text-right">{{ current_network.gateway if current_network else '--' }}</td>
+                    <td>{{ current_network.date.strftime('%d/%m/%Y, %H:%M %p ') if current_network else '--' }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% if current_network %} {% if current_network.ssid == '
+        <unknown ssid>' %}
+            <span class="rounded text-danger text-smoothing-auto">Obs:</span> The Network Scanner require permission for identify the <strong>name</strong> and <strong>mac address</strong> of Wi-Fi, for do that you need to enable the <kbd>Location</kbd>            on your device. {%endif%} {% endif%}
+    </div>
+
+
+
+    {% if devices|length > 0 %} {% macro checkDeviceType(devicetype) -%} {% if devicetype == 'PHONE' %}
+    <span class="material-icons-outlined">smartphone</span> {% elif devicetype == 'PC' %}
+    <span class="material-icons-outlined">computer</span> {% elif devicetype == 'VM' %}
+    <span class="material-icons-outlined">phonelink</span> {% elif devicetype == 'ROUTER' %}
+    <span class="material-icons-outlined">router</span> {% elif devicetype == 'NETWORK_DEVICE' %}
+    <span class="material-icons-outlined">podcasts</span> {% elif devicetype == 'GAME_CONSOLE' %}
+    <span class="material-icons-outlined">sports_esports</span> {% elif devicetype == 'SOC' %}
+    <span class="material-icons-outlined">desktop_windows</span> {% elif devicetype == 'SPEAKER' %}
+    <span class="material-icons-outlined">speaker_group</span> {% elif devicetype == 'CAST' %}
+    <span class="material-icons-outlined">cast</span> {% else %}
+    <span class="material-icons-outlined">device_unknown</span> {% endif %} {%- endmacro %}
+
+    <div class="content p-0 m-10">
+        <h5>Devices</h5>
+        <div class="row row-eq-spacing mb-5 m-0 ">
+
+            {% for device in devices %}
+            <div class="dropdown dropup with-arrow">
+
+                <a href="# " id="network_id_{{ device.hwAddress }}" aria-haspopup="true " aria-expanded="false" data-toggle="dropdown" class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex">
+                    <div class="w-60 h-60 m-5 align-self-center">
+                        <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                            {{ checkDeviceType(device.deviceType) }}
+                            <span class="sr-only">IP</span>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 d-flex align-items-center">
+                        <div class="p-10 w-full m-auto">
+                            <p class="m-0 text-dark-lm text-light-dm">
+                                <span class="badge"> {{ device.ip }}</span>
+                            </p>
+                            <p class="m-0 p-0 mt-5 text-muted font-size-12">
+                                <code class="code">{{ device.hwAddress }}</code>
+                            </p>
+
+                        </div>
+                        <div class="position-absolute top-0 right-0 z-10 p-10">
+                            {% if device.isScanningDevice %}
+                            <i class="text-secondary"><span class="material-icons-outlined md-18 ">person_outline</span></i> {% endif%}
+                        </div>
+                        <div class="position-absolute top-0 left-0 z-5 p-5">
+                            <span class="{{ 'dot_online' if device.online else 'dot_offline' }} "> </span>
+
+                        </div>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-center" aria-labelledby="network_id_{{ device.hwAddress }}">
+                    <h6 class="dropdown-header ">Device name: {{ device.deviceName }}</h6>
+                    <div class="dropdown-divider "></div>
+                    {% if device.isScanningDevice %}
+                    <a class="dropdown-item "> <span class="p-5 rounded text-secondary text-smoothing-auto">Your Device</span> </a>
+                    {% endif%} {% if device.online %}
+                    <a class="dropdown-item "><strong>Device status:</strong> <span class="p-5 rounded text-success text-smoothing-auto">Online</span> </a> {% else%}
+                    <a class="dropdown-item "><strong>Device status:</strong>  <span class="p-5 rounded text-danger text-smoothing-auto">Offline</span> </a> {%endif%}
+
+
+                    <a class="dropdown-item "> <strong> IP address: </strong> {{ device.ip }} </a>
+                    <a class="dropdown-item "> <strong> Mac address: </strong> {{ device.hwAddress }} </a>
+                    <a class="dropdown-item "> <strong> Vendor: </strong> {{ device.macVendor }} </a>
+                    <a class="dropdown-item "> <strong> Last seen: </strong> {{ device.lastSeen.strftime('%d/%m/%Y, %H:%M %p ') }} </a>
+                    <a class="dropdown-item "> <strong> Device type: </strong> {{ device.deviceType }} </a>
+                </div>
+
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+
+    {% else %}
+    <div class="content m-0 p-0">
+        <div class="row row-eq-spacing mb-5 align-items-center justify-content-center">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="{{ url_for('static', filename= 'images/netscan_devices_empty.svg') }}" class="img-fluid rounded" alt="...">
+                    <p>Devices not found!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif%}
+</div>

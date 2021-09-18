@@ -1,0 +1,35 @@
+{% extends 'default/base_auth.html' %} {% block content %}
+<div class="content-wrapper">
+    <div class="d-flex h-full align-items-center justify-content-center flex-column">
+        <div class="card w-400 mw-full m-0 position-relative">
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <div class="alert alert-danger mb-10" role="alert">
+                <button class="close" onclick="this.parentNode.classList.add('dispose')" type="button" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="alert-heading">Invalid credentials </h4>
+                {{ messages[0] }}
+            </div>
+            {% endif %} {% endwith %}
+            <form method="POST" action="/auth">
+                <div class="form-group">
+                    <label for="input-email" class="required">Email</label>
+                    <input id="input-email" name="email" class="form-control" placeholder="Your email or username" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="input-password" class="required">Password</label>
+                    <input type="password" name="password" id="input-password" class="form-control" placeholder="Your password" required="required">
+                </div>
+                <div class="custom-checkbox mb-20">
+                    <input type="checkbox" id="checkbox-1" value="">
+                    <label for="checkbox-1">Remember me</label>
+                </div>
+
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+                <input class="btn btn-primary btn-block" type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

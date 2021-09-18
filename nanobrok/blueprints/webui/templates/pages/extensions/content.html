@@ -1,0 +1,92 @@
+<div class="navbar-content m-0">
+    <!-- <p class="text-left"><strong>Last update</strong>: {{last_packet_data.registred_at.strftime('%d/%m/%Y, %H:%M %p ') if last_packet_data else '' }} </p> -->
+    <button class="btn text-left" id="btn_updateExtensions" type="button">Refresh</button>
+    <p class="ml-auto mr-10">Extensions:
+        <span class="p-5 rounded text-white bg-dark-light">{{ extensions | length}}</span>
+    </p>
+</div>
+
+<hr> {% if extensions |length > 0 %}
+<div id="list_extensions" class="row row-eq-spacing mb-5 align-items-center justify-content-center ">
+    {% for ext in extensions %}
+    <div id="title" class="dropdown dropup with-arrow toggle-on-hover ">
+        <a href="# " aria-haspopup="true " aria-expanded="false " data-toggle="dropdown" class="card sponsor-section-card w-300 mw-full m-10 p-5 d-flex " id="dsaomdmsaoda">
+            <div class="flex-grow-1 d-flex align-items-center ">
+                <div class="content p-10 w-full m-auto ">
+                    <div class="content m-0 p-0">
+                        <p name="app_name " class="m-0 font-weight-medium text-primary ">
+                            <strong>{{ ext.title }}</strong>
+                        </p>
+                        <p class="m-0 mt-2 text-muted font-size-12 ">
+                            {{ ext.subtitle }}
+                        </p>
+                        <div class="position-absolute top-0 right-0 z-10 p-10">
+                            <span class="{{ 'dot_online' if ext.hasPermission else 'dot_offline' }} "> </span>
+                        </div>
+
+                        <div class="content m-0 p-0 mt-10">
+
+                            <details class="collapse-panel mw-full">
+                                <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+                                <summary class="collapse-header">
+                                    Permissions
+                                </summary>
+                                <div class="collapse-content">
+                                    {% if ext.permissions %}
+                                    <ul>
+                                        {% for per in ext.permissions %}
+                                        <li class="text-muted">
+                                            <span class="p-5 rounded text-danger text-smoothing-auto">{{ per[19:] }}</span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif%}
+                                </div>
+                            </details>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-center " aria-labelledby="dsaomdmsaoda">
+            <h6 class="dropdown-header ">
+                <p name="app_name " class="m-0 font-weight-medium text-primary ">
+                    <strong>{{ ext.title }}</strong>
+                </p>
+            </h6>
+            <div class="dropdown-divider "></div>
+            <a class="dropdown-item "> <span class="material-icons md-18">
+                check_circle_outline
+                </span> <strong> Status: </strong> <span class="p-5 rounded text-smoothing-auto">{{ 'Enabled' if ext.hasPermission else 'Disabled' }}</span> </a>
+            <a class="dropdown-item "> <span class="material-icons md-18">
+                security
+                </span> <strong> Permission: </strong> <span class="p-5 rounded text-smoothing-auto"> {{ 'Required' if ext.requiredPermission else 'No required' }}</span> </a>
+            <a class="dropdown-item "> <span class="material-icons md-18">
+                policy
+                </span> <strong> Type: </strong> {{ ext.extensionType }} </a>
+
+            <a class="dropdown-item "> <span class="material-icons md-18">
+                calendar_today
+                </span> <strong> Update at: {{ ext.date.strftime('%d/%m/%Y, %H:%M %p ') }}</strong>
+                <p class="text-secondary d-inline "> </p>
+            </a>
+        </div>
+    </div>
+    {% endfor%}
+
+</div>
+
+{% else %}
+<div class="content m-0 p-0">
+    <div class="row row-eq-spacing mb-5 align-items-center justify-content-center">
+        <div class="col-md-4">
+            <div class="text-center">
+                <img src="{{ url_for('static', filename= 'images/events_empty.svg') }}" class="img-fluid rounded" alt="...">
+                <p>Exentions is empty, please check if your device is connected!</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif%}

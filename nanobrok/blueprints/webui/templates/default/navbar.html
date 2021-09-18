@@ -1,0 +1,43 @@
+<!-- Navbar start -->
+<nav class="navbar">
+    <div class="navbar-content">
+        <button id="toggle-sidebar-btn" class="btn btn-action" type="button" onclick="halfmoon.toggleSidebar()">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="navbar-content">
+
+        <img src="/static/images/badge.png" width="30" height="30" class="img-fluid rounded mr-5 mr-sm-10" alt="nanobrok-logo-white">
+        <h3 class="content-title m-0"><strong>{% block title %} {% autoescape false %} {{config.get('TITLE') | replace("brok","<span class='p-0 m-0 rounded text-primary text-smoothing-auto'>brok</span>")  }} {% endautoescape %}{% endblock %}</strong>
+        </h3>
+        <span class="badge ml-10"> v{% block version %}{{config.get('VERSION')}}{% endblock %}</span>
+
+    </div>
+    <div class="navbar-content">
+        <ul class="navbar-nav hidden-sm-and-down">
+            <li class="nav-item {{ 'active' if request.path == '/' else '' }}">
+                <a href="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{config.get('LINK_DOCS')}}" target="_blank" class="nav-link">Documentation</a>
+            </li>
+            <li class="nav-item {{ 'active' if request.path == '/about' else '' }}">
+                <a href="/about" class="nav-link">About</a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-content ml-auto">
+
+        <div class="mr-10">
+            <form action="/settings" method="get">
+                <button type="submit" class="btn"><i class="fas fa-cog"></i> </button>
+            </form>
+        </div>
+
+        <form action="/logout" method="get">
+            <button type="submit" value="logout" class="btn" name="btn_logout"><i class="fas fa-sign-out-alt"></i> </button>
+        </form>
+
+    </div>
+</nav>
+<!-- Navbar end -->

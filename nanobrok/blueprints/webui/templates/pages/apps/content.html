@@ -1,0 +1,54 @@
+<div class="content m-0">
+
+    <div class="navbar-content m-0">
+        <p class="text-left"><strong>Last update</strong>: {{last_packet_data.registred_at.strftime('%d/%m/%Y, %H:%M %p ') if last_packet_data else '' }} </p>
+        <!-- <button class="btn ml-auto" id="btn_updateDashboard" type="button">Refresh</button> -->
+        <p class="ml-auto mr-10">Installed application:
+            <span class="p-5 rounded text-white bg-dark-light">{{ apps | length}}</span>
+        </p>
+    </div>
+
+    <hr>
+
+    <div id="list_apps" class="row row-eq-spacing mb-5 align-items-center justify-content-center">
+        {% for app in apps %}
+
+
+        <div id="{{app.name}}" class="dropdown dropup with-arrow">
+            <a href="# " aria-haspopup="true " aria-expanded="false " data-toggle="dropdown" class="card sponsor-section-card w-300 mw-full m-10 p-5 d-flex " id="card_{{ app.name }}">
+
+                <div class="w-60 h-60 m-5 align-self-center ">
+                    <img src="data:;base64,{{ app.icon }} " class="d-block w-60 h-60 rounded ">
+                </div>
+                <div class="flex-grow-1 d-flex align-items-center ">
+                    <div class="p-10 w-full m-auto ">
+                        <p name="app_name " class="m-0 font-weight-medium text-dark-lm text-light-dm ">
+                            {{ app.name }}
+                        </p>
+                        <p class="m-0 mt-2 text-muted font-size-12 ">
+                            {{ app.package_name }}
+                        </p>
+                        <p class="m-0 mt-2 text-muted font-size-12 ">
+                            {{ app.version_name }}
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-center" aria-labelledby="card_{{ app.name }}">
+                <h6 class="dropdown-header ">Details: {{ app.name }}</h6>
+                <div class="dropdown-divider "></div>
+                <a class="dropdown-item "> <strong> Frist install time: </strong> {{ app.installed_at.strftime('%d/%m/%Y, %H:%M %p ') }} </a>
+                <a class="dropdown-item "> <strong> Last update time: </strong> {{ app.updated_at.strftime('%d/%m/%Y, %H:%M %p ') }} </a>
+                <a class="dropdown-item "> <strong> Package name: </strong> {{ app.package_name }} </a>
+                <a class="dropdown-item "> <strong> Version: </strong> {{ app.version_name }} </a>
+                <a class="dropdown-item "> <strong> Data dir: </strong>
+                    <p class="text-secondary d-inline "> {{ app.dataDir }}</p>
+                </a>
+            </div>
+        </div>
+
+        {% endfor%}
+
+    </div>
+</div>

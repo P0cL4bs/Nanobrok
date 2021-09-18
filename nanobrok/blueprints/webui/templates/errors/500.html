@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'default/header.html' %}
+
+<body class="dark-mode with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-sidebar-shortcut-enabled="true">
+
+    <!-- Page wrapper start -->
+    <div id="page-wrapper" class="page-wrapper with-navbar with-sidebar " data-sidebar-type="overlayed-all">
+
+        {% include 'default/navbar.html' %}
+
+        <div class="content-wrapper d-lg-flex align-items-lg-center">
+            <div class="container-lg">
+                <div class="row">
+
+                    <div class="col-lg-8">
+                        <div class="content">
+
+                            <h1 class="hero-header">
+                                <strong class="font-weight-medium">Internal Server Error</strong>
+                            </h1>
+                            <p class="hero-content">
+                                The server encountered an internal error or misconfiguration and was unable to complete your request. Contact the tool developer at {{config.get('EMAIL_SUPPORT')}}
+                            </p>
+                            <p class="hero-content">
+                                {{err}}
+                            </p>
+                            <div class="mt-20">
+                                <a href="/" class="btn btn-primary is-cta" role="button">
+                                    Home
+                                </a>
+                                <a onclick="history.back()" class="btn ml-10 is-cta" role="button">
+                                    Go to back
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 d-flex align-items-center justify-content-center">
+                        <div class="content">
+                            <img src="{{ url_for('static', filename= 'images/internal_error_500.svg') }}" class="img-fluid rounded" alt="...">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Content wrapper end -->
+    </div>
+    <!-- Halfmoon JS -->
+    <script src="{{ url_for('static', filename='js/halfmoon.min.js') }}"></script>
+</body>
+
+</html>

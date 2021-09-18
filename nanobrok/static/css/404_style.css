@@ -1,0 +1,432 @@
+/* Landing styles. Copyright Halfmoon UI */
+
+
+/* Font */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body.use-roboto-all {
+    font-family: "Roboto", sans-serif;
+}
+
+
+/* Change body, navbar, footer, and page wrapper bg colors */
+
+body.dark-mode {
+    background-color: #000000;
+}
+
+.page-wrapper .navbar {
+    background-color: #000000;
+}
+
+.page-wrapper {
+    background-color: rgba(17, 20, 23, 1);
+}
+
+
+/* Download button */
+
+.btn-download-sm {
+    width: 16rem;
+}
+
+
+/* Rocket animation */
+
+@keyframes rocket-animation {
+    from,
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    0%,
+    10%,
+    20%,
+    30%,
+    40%,
+    50%,
+    60%,
+    70%,
+    80%,
+    90%,
+    100% {
+        -webkit-transform: translate3d(0, -1px, 0);
+        transform: translate3d(0, -1px, 0);
+    }
+    5%,
+    15%,
+    25%,
+    35%,
+    45%,
+    55%,
+    65%,
+    75%,
+    85%,
+    95% {
+        -webkit-transform: translate3d(0, 1px, 0);
+        transform: translate3d(0, 1px, 0);
+    }
+}
+
+@-webkit-keyframes rocket-animation {
+    from,
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    0%,
+    10%,
+    20%,
+    30%,
+    40%,
+    50%,
+    60%,
+    70%,
+    80%,
+    90%,
+    100% {
+        -webkit-transform: translate3d(0, -2px, 0);
+        transform: translate3d(0, -2px, 0);
+    }
+    5%,
+    15%,
+    25%,
+    35%,
+    45%,
+    55%,
+    65%,
+    75%,
+    85%,
+    95% {
+        -webkit-transform: translate3d(0, 2px, 0);
+        transform: translate3d(0, 2px, 0);
+    }
+}
+
+.rocket.animation {
+    -webkit-animation-name: rocket-animation;
+    animation-name: rocket-animation;
+}
+
+
+/* Propellant particle animation */
+
+@-webkit-keyframes propellant-particle-animation {
+    from {
+        -webkit-transform: scale3d(2, 2, 2);
+        transform: scale3d(2, 2, 2);
+    }
+    50% {
+        -webkit-transform: scale3d(1.5, 1.5, 1.5);
+        transform: scale3d(1.5, 1.5, 1.5)
+    }
+    to {
+        -webkit-transform: scale3d(2, 2, 2);
+        transform: scale3d(2, 2, 2);
+    }
+}
+
+@keyframes propellant-particle-animation {
+    from {
+        -webkit-transform: scale3d(2, 2, 2);
+        transform: scale3d(2, 2, 2);
+    }
+    50% {
+        -webkit-transform: scale3d(1.5, 1.5, 1.5);
+        transform: scale3d(1.5, 1.5, 1.5)
+    }
+    to {
+        -webkit-transform: scale3d(2, 2, 2);
+        transform: scale3d(2, 2, 2);
+    }
+}
+
+.propellant-particle.animation {
+    -webkit-animation-name: propellant-particle-animation;
+    animation-name: propellant-particle-animation;
+}
+
+
+/* Base animation, and helpers */
+
+.animation {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.animation.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.animation.delay-small {
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+}
+
+.animation.delay-very-small {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+.animation.fast {
+    -webkit-animation-duration: 800ms;
+    animation-duration: 800ms;
+}
+
+.animation.slow {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+@media (print),
+(prefers-reduced-motion: reduce) {
+    .animation {
+        -webkit-animation-duration: 1ms !important;
+        animation-duration: 1ms !important;
+        -webkit-transition-duration: 1ms !important;
+        transition-duration: 1ms !important;
+        -webkit-animation-iteration-count: 1 !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+
+/* Launchpad animation pseudo-variables */
+
+.launchpad-animation-container {
+    width: 12rem;
+}
+
+.propellant-particles-container-row {
+    margin-top: -0.5rem;
+}
+
+.propellant-particle {
+    width: 2rem;
+    height: 2rem;
+}
+
+.propellant-particle.large {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+@media (max-width: 768px) {
+    .launchpad-animation-container {
+        width: 10rem;
+    }
+    .propellant-particles-container-row {
+        margin-top: -0.5rem;
+    }
+    .propellant-particle {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+    .propellant-particle.large {
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+}
+
+
+/* Launchpad animation styles */
+
+.launchpad-animation-container {
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-user-select: none;
+    /* Chrome all / Safari all */
+    -moz-user-select: none;
+    /* Firefox all */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
+}
+
+.rocket-container,
+.propellant-particles-container-row {
+    width: 100%;
+}
+
+.rocket {
+    display: block;
+    margin: auto;
+    pointer-events: none;
+    max-width: 100%;
+}
+
+.propellant-particles-container-row {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.propellant-particle {
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.propellant-particle.yellow {
+    background: rgba(255, 195, 18, 0.9);
+}
+
+.propellant-particle.red {
+    background: rgba(237, 76, 103, 1);
+}
+
+.propellant-particle.blue {
+    background: rgba(6, 82, 221, 0.75);
+}
+
+.propellant-particle.shadow {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Hero styles */
+
+.hero-header {
+    font-size: 3rem;
+}
+
+@media (max-width: 576px) {
+    .hero-header {
+        font-size: 2.2rem;
+    }
+}
+
+.hero-content {
+    font-size: 1.8rem;
+}
+
+@media (max-width: 576px) {
+    .hero-content {
+        font-size: 1.4rem;
+    }
+}
+
+a.is-cta {
+    display: inline-block;
+    font-size: 1.6rem;
+    height: 4rem;
+    line-height: 4rem;
+    letter-spacing: 1px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+@media (max-width: 576px) {
+    a.is-cta {
+        font-size: 1.4rem;
+        height: 3.6rem;
+        line-height: 3.6rem;
+    }
+}
+
+
+/* Notice link */
+
+a.notice-link {
+    display: block;
+    border-radius: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.025);
+}
+
+a.notice-link:hover {
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+}
+
+
+/* Scrollbar */
+
+@media (min-width: 769px) {
+    .dark-mode.with-custom-webkit-scrollbars .content-wrapper::-webkit-scrollbar-track:vertical {
+        border-left: none;
+    }
+    .dark-mode.with-custom-css-scrollbars .content-wrapper {
+        scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+    }
+}
+
+
+/* Sponsor section card */
+
+.sponsor-section-card {
+    display: block;
+    text-decoration: none;
+}
+
+.dark-mode .sponsor-section-card {
+    background-color: #1e2125;
+}
+
+.sponsor-section-card:hover {
+    text-decoration: none;
+}
+
+.sponsor-section-card:focus {
+    text-decoration: none;
+    box-shadow: 0 0 0 0.2rem rgba(24, 144, 255, 0.6);
+    outline: none;
+}
+
+.font-size-10 {
+    font-size: 1rem;
+}
+
+.h-120 {
+    height: 12rem;
+}
+
+.sponsor-section-card-scroll-block {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 1rem;
+    border-bottom-right-radius: 0.4rem;
+    background-color: rgba(255, 255, 255, 0.975);
+}
+
+.dark-mode .sponsor-section-card-scroll-block {
+    background-color: rgba(30, 33, 37, 0.95);
+}
+
+.sponsor-section-card,
+.sponsor-section-card:hover,
+.sponsor-section-card:focus,
+.sponsor-section-card:active {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .sponsor-section-card,
+.dark-mode .sponsor-section-card:hover,
+.dark-mode .sponsor-section-card:focus,
+.dark-mode .sponsor-section-card:active {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.w-60 {
+    width: 6rem;
+}
+
+.h-60 {
+    height: 6rem;
+}
+
+
+/* Only for landing */
+
+.dark-mode .sponsor-section-card:not(:focus) {
+    border-color: rgba(255, 255, 255, 0.025) transparent transparent transparent;
+    box-shadow: 0 0.2rem rgba(0, 0, 0, 0.1);
+}

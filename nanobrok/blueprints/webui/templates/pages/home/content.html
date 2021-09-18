@@ -1,0 +1,540 @@
+<div class="content">
+
+    <div class="navbar-content m-0">
+        <h2 class="content-title mb-5">
+            {{ mobile_user.deviceInfo.manufacturer }} {{ mobile_user.deviceInfo.model }}
+        </h2>
+
+        <button class="btn ml-auto" id="btn_updateDashboard" type="button">Refresh</button>
+    </div>
+
+    <div class="navbar-content m-0">
+
+        <div class="row row-eq-spacing m-0 p-0">
+
+            <div class="content justify-content-center m-0 p-0">
+                <div class="card sponsor-section-card mw-full m-5 p-0 d-flex {{ 'sponsor-section-card-activated' if mobile_user.deviceInfo.isWifiEnabled == True and mobile_user.is_connected == True else '' }}" rel="noopener">
+                    <div class="w-50 h-50 m-10 align-self-center">
+                        <div class="w-50 h-50 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                            <i class="fa fa-wifi font-size-24" aria-hidden="true"></i>
+                            <span class="sr-only">Device</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center font-size-12 ">Wifi</p>
+            </div>
+
+            <div class="content justify-content-center m-0 p-0">
+
+                <div class="card sponsor-section-card mw-full m-5 p-0 d-flex {{ 'sponsor-section-card-activated' if mobile_user.d_mobile_enabled == True and mobile_user.is_connected == True else '' }}" rel="noopener">
+                    <div class="w-50 h-50 m-10 align-self-center">
+                        <div class="w-50 h-50 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                            <i class="fas fa-exchange-alt font-size-24" aria-hidden="true"></i>
+                            <span class="sr-only">Device</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center font-size-12 ">Mobile data</p>
+            </div>
+            <div class="content justify-content-center m-0 p-0">
+
+                <div class="card sponsor-section-card mw-full m-5 p-0 d-flex {{ 'sponsor-section-card-activated' if mobile_user.deviceInfo.isBluetoothEnabled == True and mobile_user.is_connected == True else '' }}" rel="noopener">
+                    <div class="w-50 h-50 m-10 align-self-center">
+                        <div class="w-50 h-50 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                            <i class="fab fa-bluetooth font-size-24" aria-hidden="true"></i>
+                            <span class="sr-only">Device</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center font-size-12 mb-2 ">Bluetooth</p>
+            </div>
+
+            <div class="content justify-content-center m-0 p-0">
+                <div class="card sponsor-section-card mw-full m-5 p-0 d-flex {{ 'sponsor-section-card-activated' if mobile_user.deviceInfo.isGpsEnabled == True and mobile_user.is_connected == True else '' }}" rel="noopener">
+                    <div class="w-50 h-50 m-10 align-self-center">
+                        <div class="w-50 h-50 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                            <i class="fa fa-location-arrow font-size-24" aria-hidden="true"></i>
+                            <span class="sr-only">Device</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center font-size-12 ">Localization</p>
+            </div>
+        </div>
+
+        <p class="text-left m-0 p-0 ml-auto"><strong>Last seen</strong>: {{ mobile_user.lest_seen.strftime('%d/%m/%Y, %H:%M %p ') }} </p>
+
+    </div>
+    <hr>
+
+    <h6><strong>Software</strong> </h6>
+    <div class="row row-eq-spacing mb-5 m-0 p-0">
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <i class="fa fa-mobile font-size-24" aria-hidden="true"></i>
+                    <span class="sr-only">Device</span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Device
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.deviceInfo.manufacturer }} {{ mobile_user.deviceInfo.model }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <i class="fa fa-battery-full font-size-24" aria-hidden="true"></i>
+                    <span class="sr-only">Battery</span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Battery
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        Remaining {{ mobile_user.deviceInfo.batteryPercentage }} %
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card sponsor-section-card  w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <i class="fab fa-android font-size-24" aria-hidden="true"></i>
+                    <span class="sr-only">Android version</span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Android Version
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.deviceInfo.oSVersion }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <i class="fab fa-slack-hash font-size-24" aria-hidden="true"></i>
+                    <i class="fab fa-slack-hash"></i>
+                    <span class="sr-only">ROOT</span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Root
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.deviceInfo.isRoot }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <i class="fas fa-phone font-size-24" aria-hidden="true"></i>
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Phone number
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.phone_number }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <i class="fas fa-cogs font-size-24" aria-hidden="true"></i>
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        API level
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.deviceInfo.buildVersionSDK }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <span class="material-icons-outlined">ring_volume</span>
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Ringer Mode
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.deviceInfo.deviceRingerMode }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <span class="material-icons-outlined">
+                        public
+                        </span>
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Network Type
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.deviceInfo.networkType }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <h6><strong>Hardware</strong></h6>
+    <hr>
+    <div class="row row-eq-spacing mb-5 m-0 p-0">
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <i class="fas fa-microchip font-size-24" aria-hidden="true"></i>
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Mac address
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.mac_address }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <i class="fa fa-barcode font-size-24" aria-hidden="true"></i>
+                    <span class="sr-only">IMEI</span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        IMEI
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.imei }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <i class="fa fa-barcode font-size-24" aria-hidden="true"></i>
+                    <span class="sr-only">IMEI 2</span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        IMEI 2
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.imei2 }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <span class="material-icons-outlined">memory</span>
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Total RAM
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {% if mobile_user.deviceInfo.totalRAM %} {{ mobile_user.deviceInfo.totalRAM | filesizeformat(true)}} {% endif%}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <span class="material-icons-outlined">storage</span>
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Available Storage
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {% if mobile_user.deviceInfo.aInternalMemory %} {{ mobile_user.deviceInfo.aInternalMemory | filesizeformat(true)}} {% endif%}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <span class="material-icons-outlined">storage</span>
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Total Storage
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {% if mobile_user.deviceInfo.totalInternalMemory %} {{ mobile_user.deviceInfo.totalInternalMemory | filesizeformat(true)}} {% endif%}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <span class="material-icons-outlined">
+                        charging_station
+                        </span>
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Device Changing
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.deviceInfo.isDeviceCharging }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <span class="material-icons-outlined">
+                        battery_charging_full
+                        </span>
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Battery Voltage
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.deviceInfo.batteryVoltage }} V
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card sponsor-section-card w-250 mw-full m-5 p-0 d-flex" rel="noopener">
+            <div class="w-60 h-60 m-10 align-self-center">
+                <div class="w-60 h-60 rounded d-flex align-items-center justify-content-center bg-light-lm bg-dark-light-dm text-dark-lm text-light-dm">
+                    <span class="material-icons-outlined">
+                        devices
+                        </span>
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="p-10 w-full m-auto">
+                    <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                        Emulator
+                    </p>
+                    <p class="m-0 mt-5 text-muted font-size-12">
+                        {{ mobile_user.deviceInfo.isRunningOnEmulator }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="content m-10 mt-20">
+
+        <div class="row">
+            <div class="col-sm">
+
+                <div class="content m-0 mr-10 p-0">
+
+                    <details class="collapse-panel " open>
+                        <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100%, mt-20 = margin-top: 2rem (20px) -->
+                        <summary class="collapse-header">
+                            Last locations
+                        </summary>
+                        <div class="collapse-content h-300">
+                            <div class="card  bg-very-dark-dm h-250 overflow-y-auto mw-full m-0 d-flex align-items-center">
+
+                                <div class="m-auto">
+
+                                    {% if locations.items %}
+
+                                    <ul class="location_list">
+                                        {% for location in locations.items %}
+                                        <li>
+                                            <a href="#" id="{{location.id}}" class="card sponsor-section-card mw-full m-0 p-0 d-flex list_ul" rel="noopener">
+                                                <div class="flex-grow-1 d-flex align-items-center">
+                                                    <div class="p-10 w-full m-auto">
+                                                        <p class="m-0 font-weight-medium text-dark-lm text-light-dm">
+                                                            {{ location.date.strftime('%d/%m/%Y, %H:%M %p ') }} <i class="fa fa-angle-right ml-5" aria-hidden="true"></i>
+                                                        </p>
+                                                        <p class="m-0 mt-5 text-muted font-size-12 address">
+                                                            {{ location.address if location.address else "Unknown" }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% else %}
+                                    <p class="m-0 mt-5 text-muted font-size-18"> No locations found</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                </div>
+
+
+            </div>
+
+            <div class="col-sm">
+                <div class="content m-0 ml-10 p-0">
+
+                    <details class="collapse-panel " open>
+                        <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100%, mt-20 = margin-top: 2rem (20px) -->
+                        <summary class="collapse-header">
+                            Last wireless information
+                        </summary>
+                        <div class="collapse-content h-300">
+                            <table class="table table-striped mb-15">
+                                <tbody>
+                                    <tr>
+                                        <td>SSID</td>
+                                        <td>{{ wifiInfo.ssid if wifiInfo else '--' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BSSID</td>
+                                        <td>{{ wifiInfo.bssid if wifiInfo else '--' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IP Address</td>
+                                        <td>{{ wifiInfo.ip_address if wifiInfo else '--' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gateway</td>
+                                        <td>{{ wifiInfo.gateway if wifiInfo else '--' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Signal</td>
+                                        <td>{{ wifiInfo.rssi if wifiInfo else '--' }} %</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date</td>
+                                        <td>{{ wifiInfo.date.strftime('%d/%m/%Y, %H:%M %p ') if wifiInfo else '--' }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content m-10 p-0 mt-20">
+
+        <details class="collapse-panel " open>
+            <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100%, mt-20 = margin-top: 2rem (20px) -->
+            <summary class="collapse-header">
+                Last logs
+            </summary>
+            <div class="collapse-content">
+                <table class="table table-striped" id="table_packet_data">
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>PacketType</th>
+                            <th>Event</th>
+                            <th class="text-right">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for packetdata in allPacketData.items %}
+                        <tr>
+                            <th>{{packetdata.command if packetdata.command else ""}}</th>
+                            <td><span class="p-5 rounded text{{'-success' if packetdata.packet_type.name == 'SEND_PACKET_CODE' else '-secondary'}} bg-dark{{'-light' if packetdata.packet_type.name == 'SEND_PACKET_CODE' else ''}}">{{packetdata.packet_type.name}}</span></td>
+                            <td><span class="badge ">{{packetdata.event}}</span></td>
+                            <td class="text-right">{{packetdata.registred_at.strftime('%d/%m/%Y, %H:%M %p ') }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </details>
+    </div>

@@ -1,0 +1,12 @@
+{% extends 'default/base.html' %} {% block content %}
+
+<h3>Network Scanner</h3>
+<div class="content m-0 p-0" id="content_netscan">
+    {% include "pages/netscan/topbar.html" %} {% include "pages/netscan/result.html" %}
+</div>
+
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/global.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/netscan.js') }}"></script>
+{% endblock %}

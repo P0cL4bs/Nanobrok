@@ -1,0 +1,19 @@
+{% extends 'default/base.html' %} {% block content %}
+
+<h3>Extensions</h3>
+
+<div class="card mt-10 m-0">
+    <div class="content m-0 p-0">
+
+        <div id="content_extensions">
+            {% include "pages/extensions/content.html" %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/global.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/extensions.js') }}"></script>
+{% endblock %}

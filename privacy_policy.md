@@ -23,7 +23,7 @@ We do not collect information about your device, as well as personal information
 
 Sensitive data:
 
- - Location: Position (latitude and longitude) All data collected through the cell phone's GPS service, for monitoring your depositvo the event it's lost or stolen, are shared only with your remote application, collected in the background, even when the app is closed or not in use.
+ - Location: Position (latitude and longitude) All data collected through the cell phone's GPS service, for monitoring your device the event it's lost or stolen, are shared only with your remote application, collected in the background, even when the app is closed or not in use.
 
 - Date/Time: Geolocation record date and time information.
 

@@ -1,0 +1,38 @@
+{% extends 'default/base.html' %} {% block content %}
+
+<h3>Events</h3>
+<div class="content m-0 p-0">
+    <div class="btn-toolbar mt-10 p-5 bg-light-lm bg-very-dark-dm rounded" role="toolbar" aria-label="Another toolbar with button group and input group">
+        <!-- mt-10 = margin-top: 1rem (10px), p-5 = padding: 0.5rem (5px), bg-light-lm = background-color: var(--gray-color-light) only in light mode, bg-very-dark-dm = background-color: var(--dark-color-dark) only in dark mode, rounded = rounded corners -->
+        <div class="btn-group" role="group" aria-label="First group">
+            <button class="btn btn-square" id="btnStartEventsRequest" type="button"> <i class="fas fa-play"></i></button>
+            <button class="btn btn-square disabled" id="btnStopEventsRequest" type="button"> <i class="fas fa-stop"></i> </button>
+        </div>
+        <div class="navbar-content">
+            <button class="btn btn-rounded btn-sm mr-10" onclick="filter_events_by_packet_type('SEND_PACKET_CODE')" type="button">SEND_PACKET_CODE</button>
+            <button class="btn btn-rounded btn-sm" onclick="filter_events_by_packet_type('RECEIVE_PACKET_CODE')" type="button">RECEIVE_PACKET_CODE</button>
+        </div>
+
+        <div class="input-group ml-auto">
+            <!-- ml-auto = margin-left: auto -->
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+            </div>
+            <input type="text" class="form-control" id="input_filter_table" onkeyup="filter_events()" placeholder="Search by event">
+        </div>
+        <button class="btn ml-10" onclick="filter_events_by_packet_type('')" type="button">Clear filters</button>
+
+    </div>
+
+    <div id="content_table_events">
+        {% include "pages/events/table.html" %}
+    </div>
+
+</div>
+
+
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/global.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app/events.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'default/header_single_page.html' %}
+
+<body class="dark-mode with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true">
+
+
+    <!-- Page wrapper start -->
+    <div id="page-wrapper" class="page-wrapper">
+
+        <!-- Content wrapper start -->
+        <div class="content-wrapper bg-light-lm bg-dark-dm css-scrollbar-transparent-track">
+
+            <div class="container-lg h-full">
+                <div class="row h-full">
+                    <div class="col-md-8 offset-md-2 bg-white-lm bg-dark-light-dm">
+
+                        <!-- Navbar start -->
+                        <nav class="navbar bg-transparent">
+                            <a href="/" class="navbar-brand">
+                                <h3 class="content-title m-0 mr-10">Nanobrok</h3>
+                                <span class="badge font-size-12 text-monospace px-5 px-sm-10">
+                                    v{{config.get('VERSION')}}
+                                </span>
+                            </a>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a onclick="history.back()" class="nav-link">Back <i class="fa fa-angle-right ml-5" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- Navbar end -->
+
+                        <!-- Page content start -->
+
+                        <div class="content">
+                            <h1 class="content-title mb-0" style="font-size: 2.8rem;">
+                                Privacy policy
+                            </h1>
+                            <p class="text-muted mt-0">
+                                Last updated: {{config.get('UPDATE_PRIVACY_POLICY')}}
+                            </p>
+                            <p>
+                                <a href="/team/" class="hyperlink">Nanobrok</a> is a security mobile tool that provide a secure communication with your remote server for control your device for every you want.
+                            </p>
+                            <p>
+                                I've built the Nanobrok app as an Open Source app. This SERVICE is provided by me at no cost and is intended for use as is. This page is used to inform website visitors regarding my policies with the collection, use, and disclosure of Personal Information
+                                if anyone decided to use my Service. If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. I will not use or share your information with anyone except as described
+                                in this Privacy Policy.
+                            </p>
+
+                            <p>
+                                The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Nanobrok unless otherwise defined in this Privacy Policy.
+                            </p>
+
+                            <p>
+                                If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
+                            </p>
+
+                            <h2 class="content-title">
+                                Information Collection and Use
+                            </h2>
+                            <p>
+                                We not collect any information your device includes both information you knowingly and actively provide us when using or participating in any of our services, and any information automatically sent by your devices in the course of accessing our services.
+                            </p>
+
+                            <h2 class="content-title">
+                                Security of Your Personal Information
+                            </h2>
+                            <p>
+                                Although we will do our best to protect the personal information you provide to us, we advise that no method of electronic transmission or storage is 100% secure, and no one can guarantee absolute data security. We will comply with laws applicable to
+                                us in respect of any data breach.
+                            </p>
+                            <p>
+                                You are responsible for selecting any password and its overall security strength, ensuring the security of your own information within the bounds of our services </p>
+                            </p>
+
+                            <h2 class="content-title">
+                                Contact Us
+                            </h2>
+                            <p>
+                                For any questions or concerns regarding your privacy, you may contact us using the following details:
+                            </p>
+
+                            <p>
+                                Marcos Bomfim (mh4x0f) <br> mh4root@gmail.com
+                            </p>
+                        </div>
+
+                        <!-- Page content end -->
+
+                        <!-- Footer start -->
+                        <div class="content my-0">
+                            <hr class="my-0" />
+                        </div>
+                        <nav class="navbar navbar-static-bottom bg-transparent border-top-transparent">
+                            <div class="container-lg">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a href="mailto:{{config.get('EMAIL_SUPPORT')}}" class="nav-link" target="_blank" rel="noopener">Contact us</a>
+                                    </li>
+                                </ul>
+                                <span class="navbar-text ml-0">
+                                    &copy; Copyright 2021, Nanobrok - p0cL4bs Team
+                                </span>
+                            </div>
+                        </nav>
+                        <!-- Footer end -->
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Content wrapper end -->
+
+    </div>
+    <!-- Page wrapper end -->
+
+    <!-- Halfmoon JS -->
+    <script src="{{ url_for('static', filename='js/halfmoon.min.js') }}"></script>
+
+</body>
+
+
+
+</html>

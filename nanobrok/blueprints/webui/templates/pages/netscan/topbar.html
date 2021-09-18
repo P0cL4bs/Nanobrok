@@ -1,0 +1,18 @@
+<div class="btn-toolbar mt-10 p-5 bg-light-lm bg-very-dark-dm rounded" role="toolbar" aria-label="Another toolbar with button group and input group">
+    <!-- mt-10 = margin-top: 1rem (10px), p-5 = padding: 0.5rem (5px), bg-light-lm = background-color: var(--gray-color-light) only in light mode, bg-very-dark-dm = background-color: var(--dark-color-dark) only in dark mode, rounded = rounded corners -->
+    <div class="btn-group" role="group" aria-label="First group">
+        <button class="btn btn-primary" id="btnFindDevices" type="button">Find devices</button>
+    </div>
+    <div class="input-group ml-10">
+        <div class="content d-flex m-0 p-0">
+            <select class="form-control mr-10" id="select_netscan_networks">
+                <option value="0" selected="selected" >Select a date to view</option>
+                {% if networks %}
+                    {% for network in networks %}
+                        <option value="{{ network.date }}">{{ network.date.strftime('%d/%m/%Y, %H:%M %p ') }}</option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,162 @@
+/* Pages styles. Copyright Halfmoon UI */
+
+:root {
+    /* Change primary color from blue to indigo */
+    --primary-color: #6C6FC9;
+    /* Before: var(--blue-color) */
+    --primary-color-light: #6C6FC9;
+    /* Before: var(--blue-color-light) */
+    --primary-color-very-light: #6C6FC9;
+    /* Before: var(--blue-color-very-light) */
+    --primary-color-dark: #6C6FC9;
+    /* Before: var(--blue-color-dark) */
+    --primary-color-very-dark: #6C6FC9;
+    /* Before: var(--blue-color-very-dark) */
+    --primary-box-shadow-color: #474a86;
+    /* Before: var(--blue-box-shadow-color) */
+    --primary-box-shadow-color-darker: #484a86;
+    /* Before: var(--blue-box-shadow-color-darker) */
+    --text-color-on-primary-color-bg: var(--text-color-on-indigo-color-bg);
+    /* Before: var(--text-color-on-blue-color-bg) */
+}
+
+
+/* Font */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body.use-roboto-all {
+    font-family: "Roboto", sans-serif;
+}
+
+
+/* Halfmoon logo */
+
+.halfmoon-logo-img {
+    width: 10.8rem;
+    margin-right: 1rem;
+}
+
+
+/* Dark mode toggle button */
+
+.btn-dm-toggle {
+    width: 3.6rem;
+    height: 3.6rem;
+    line-height: 3.6rem;
+    padding: 0;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+
+
+/* Subscriber form container */
+
+.subscriber-form-container {
+    min-height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.025);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .subscriber-form-container {
+    background-color: #111417;
+}
+
+@media (max-width: 768px) {
+    .subscriber-form-container {
+        border-left: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
+
+/* Sponsor section card */
+
+.sponsor-section-card {
+    display: block;
+    text-decoration: none;
+}
+
+.dark-mode .sponsor-section-card {
+    background-color: #1e2125;
+}
+
+.sponsor-section-card:hover {
+    text-decoration: none;
+}
+
+.sponsor-section-card:focus {
+    text-decoration: none;
+    box-shadow: 0 0 0 0.2rem rgba(24, 144, 255, 0.6);
+    outline: none;
+}
+
+.font-size-10 {
+    font-size: 1rem;
+}
+
+.h-120 {
+    height: 12rem;
+}
+
+.sponsor-section-card-scroll-block {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 1rem;
+    border-bottom-right-radius: 0.4rem;
+    background-color: rgba(255, 255, 255, 0.975);
+}
+
+.dark-mode .sponsor-section-card-scroll-block {
+    background-color: rgba(30, 33, 37, 0.95);
+}
+
+.sponsor-section-card,
+.sponsor-section-card:hover,
+.sponsor-section-card:focus,
+.sponsor-section-card:active {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .sponsor-section-card,
+.dark-mode .sponsor-section-card:hover,
+.dark-mode .sponsor-section-card:focus,
+.dark-mode .sponsor-section-card:active {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.w-60 {
+    width: 6rem;
+}
+
+.h-60 {
+    height: 6rem;
+}
+
+
+/* Pseudo-variables. The following styles need to be changed for different themes. */
+
+.subscriber-form-container {
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+.dark-mode .subscriber-form-container {
+    background-color: #111417;
+}
+
+.dark-mode .sponsor-section-card {
+    background-color: #1e2125;
+}
+
+.sponsor-section-card-scroll-block {
+    border-bottom-right-radius: 0.4rem;
+    background-color: rgba(255, 255, 255, 0.975);
+}
+
+.dark-mode .sponsor-section-card-scroll-block {
+    background-color: rgba(30, 33, 37, 0.95);
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'default/header.html' %}
+
+<body class="dark-mode with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-sidebar-shortcut-enabled="true">
+
+    <!-- Page wrapper start -->
+    <div id="page-wrapper" class="page-wrapper with-navbar with-sidebar " data-sidebar-type="overlayed-all">
+
+        <!-- Sticky alerts -->
+        <div class="sticky-alerts"></div>
+
+        {% include 'default/navbar.html' %}
+
+        <!-- Sidebar overlay -->
+        <div class="sidebar-overlay" onclick="halfmoon.toggleSidebar()"></div>
+
+        {% include 'default/sidebar.html' %}
+
+        <!-- Content wrapper start -->
+        <div class="content-wrapper">
+            <div class="container-fuild">
+                <div class="w-full h-full d-flex ">
+                    <div class="content w-full">
+                        {% block page_header %}{% endblock %} {% block content %} {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <!-- footer custom start -->
+
+            <!-- footer custom end -->
+
+        </div>
+        <!-- Content wrapper end -->
+
+    </div>
+    <!-- Page wrapper end -->
+
+    <!-- Halfmoon JS -->
+    <script src="{{ url_for('static', filename='js/halfmoon.min.js') }}"></script>
+    {% block scripts %} {% endblock %}
+</body>
+
+</html>
