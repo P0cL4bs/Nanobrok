@@ -98,7 +98,7 @@ def route_action_startscan():
 
 @login_required
 def route_action_view_netscan():
-    content = request.get_json(force=True)
+    content = request.get_json(silent=True)
     try:
         networkScan = NetworkScan.query.filter_by(date=content["date"]).first()
     except Exception:

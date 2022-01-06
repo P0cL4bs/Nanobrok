@@ -59,7 +59,7 @@ def route_page_commands():
 @login_required
 def route_commands_permision():
 
-    permissionData = request.get_json(force=True)
+    permissionData = request.get_json(silent=True)
     if not permissionData:
         raise VE(msg="There was an error in your request, please try again.", code=400)
     schema = PermissionCheckShema()
@@ -129,7 +129,7 @@ def route_commands_record_audio():
     result = None
     records_audios = []
 
-    recordData = request.get_json(force=True)
+    recordData = request.get_json(silent=True)
     if not recordData:
         raise VE(msg="There was an error in your request, please try again.", code=400)
     schema = AudioTimeRecordSchema()

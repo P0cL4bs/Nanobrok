@@ -4,7 +4,13 @@
 
 ### Changed
 
+- changed: default name database postgres for `nanobrok_db`
+
+### Fixed
+
 - fixed: screenshot image more quality version 
+- fixed: With silent=True set, the get_json function will fail
+silently when trying to retrieve the json body.
 
 ## [Version] - 2021-09-18
 

@@ -129,7 +129,7 @@ class MaxInactivityTimeLockResource(Resource):
     @token_required_admin
     def post(self, current_user):
 
-        timeLookData = request.get_json(force=True)
+        timeLookData = request.get_json(silent=True)
         if not timeLookData:
             raise VE(
                 msg="There was an error in your request, please try again.", code=400
@@ -272,7 +272,7 @@ class MessageResource(Resource):
     @token_required_admin
     def post(self, current_user):
 
-        message_data = request.get_json(force=True)
+        message_data = request.get_json(silent=True)
         if not message_data:
             raise VE(
                 msg="There was an error in your request, please try again.", code=400
@@ -349,7 +349,7 @@ class ClipBoardResource(Resource):
     )
     def post(self, current_user=None):
 
-        clipboard_data = request.get_json(force=True)
+        clipboard_data = request.get_json(silent=True)
         if not clipboard_data:
             raise VE(
                 msg="There was an error in your request, please try again.", code=400
@@ -427,7 +427,7 @@ class AlarmResource(Resource):
     @token_required_admin
     def post(self, current_user):
 
-        message_data = request.get_json(force=True)
+        message_data = request.get_json(silent=True)
         if not message_data:
             raise VE(
                 msg="There was an error in your request, please try again.", code=400

@@ -75,7 +75,7 @@ DATE_RELEASE = "01/07/2021"
 # flask flags and settings application
 SESSION_TYPE = "sqlalchemy"
 SQLALCHEMY_TRACK_MODIFICATIONS=false
-SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/project_safe'
+SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/nanobrok_db'
 TEMPLATES_AUTO_RELOAD = true
 SECRET_KEY = "jadkfbsdkjbfbh"
 PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']

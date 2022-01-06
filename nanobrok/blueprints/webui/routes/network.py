@@ -51,7 +51,7 @@ def content_actions_network(ipaddress):
 @login_required
 def content_view_network():
     try:
-        content = request.get_json(force=True)
+        content = request.get_json(silent=True)
         print("content: {}".format(content))
         last_wifiInfo = WifiInfo.query.filter_by(date=content["date"]).first()
         return render_template("pages/network/view.html", last_wifiInfo=last_wifiInfo)
@@ -61,7 +61,7 @@ def content_view_network():
 
 @login_required
 def content_action_network_delete():
-    content = request.get_json(force=True)
+    content = request.get_json(silent=True)
     try:
         wifiInfo = WifiInfo.query.filter_by(date=content["date"]).first()
     except Exception:
@@ -76,7 +76,7 @@ def content_action_network_delete():
 
 @login_required
 def content_action_network_delete_all():
-    content = request.get_json(force=True)
+    content = request.get_json(silent=True)
     try:
         wifiInfo = WifiInfo.query.filter_by(ip_address=content["ip"]).first()
     except Exception:

@@ -43,7 +43,7 @@ class UserResource(Resource):
     @ns_user.doc(responses={200: "User registered successfully."})
     @token_required_admin
     def post(self, args):
-        user_data = request.get_json(force=True)
+        user_data = request.get_json(silent=True)
         if not user_data:
             raise VE(
                 msg="There was an error in your request, please try again.", code=400
